@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RubricPro · Gateway multimodelo — Erik Fontella (LIAA 2026.2)</title>
+<meta name="description" content="RubricPro: rubricas de avaliação geradas por IA através de um gateway com cinco provedores. Projeto de Erik Fontella, André Medeiros e Pedro Guilherme na LIAA 2026.2 (Unipampa).">
+<link rel="icon" href="assets/rp.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400..800&family=JetBrains+Mono:wght@400..700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0F172A; --muted:#4A5568; --soft:#8A93A3; --line:#E3E7EE;
+  --page:#F4F6FA; --surface:#FFFFFF; --night:#111113; --night2:#1B1B1F; --nightline:#2C2C33;
+  --blue:#1E88E5; --blue-d:#1565C0; --blue-l:#3D9BF0; --cyan:#00BCD4; --amber:#E8A33D; --green:#2E9E5B;
+  --mono:'JetBrains Mono',ui-monospace,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--page);color:var(--ink);font:17px/1.6 'Plus Jakarta Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--blue-d)}
+img{max-width:100%;display:block}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.eyebrow{font:600 13px/1.2 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--blue-d);margin:0 0 14px}
+h1,h2,h3{letter-spacing:-.02em;margin:0}
+h2{font-size:clamp(30px,4.2vw,46px);line-height:1.08;font-weight:800;max-width:820px}
+h3{font-size:20px;line-height:1.25;font-weight:700}
+p{margin:0}
+.lede{font-size:19px;color:var(--muted);max-width:720px;margin-top:16px}
+section{padding:96px 0}
+section + section{border-top:1px solid var(--line)}
+
+/* nav */
+nav{position:sticky;top:0;z-index:20;background:rgba(17,17,19,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--nightline)}
+nav .wrap{display:flex;align-items:center;gap:22px;height:60px;overflow-x:auto;white-space:nowrap}
+nav .brand{display:flex;align-items:center;gap:10px;color:#F8FAFC;font-weight:800;text-decoration:none;margin-right:auto}
+nav .brand img{width:22px;height:auto}
+nav a.l{color:#B8C0CC;text-decoration:none;font-size:14px;font-weight:600}
+nav a.l:hover{color:#fff}
+nav a.cta{background:var(--blue);color:#fff;text-decoration:none;font-size:14px;font-weight:700;padding:8px 14px;border-radius:999px}
+
+/* hero */
+.hero{background:var(--night);color:#F1F5F9;padding:88px 0 96px;border:0;position:relative;overflow:hidden}
+.hero:before{content:"";position:absolute;inset:auto -10% -40% 40%;height:520px;background:radial-gradient(closest-side,rgba(30,136,229,.28),transparent);pointer-events:none}
+.hero .eyebrow{color:var(--blue-l)}
+.hero h1{font-size:clamp(44px,7vw,84px);line-height:1;font-weight:800;letter-spacing:-.035em;max-width:900px}
+.hero h1 span{color:var(--blue-l)}
+.hero .lede{color:#B8C0CC;max-width:700px;font-size:20px}
+.hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center;margin-top:44px}
+.video{aspect-ratio:16/9;border-radius:18px;background:linear-gradient(135deg,#1B1B1F,#16263a);border:1px solid var(--nightline);display:grid;place-items:center;text-align:center;position:relative;overflow:hidden}
+.video video,.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video .ph{padding:24px}
+.video .play{width:64px;height:64px;border-radius:50%;background:var(--blue);display:grid;place-items:center;margin:0 auto 14px}
+.video .ph p{color:#B8C0CC;font-size:15px}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.stat{background:var(--night2);border:1px solid var(--nightline);border-radius:16px;padding:20px 22px}
+.stat b{display:block;font-size:46px;line-height:1;font-weight:800;letter-spacing:-.03em;color:#F8FAFC}
+.stat span{display:block;color:#B8C0CC;font-size:14.5px;margin-top:8px;line-height:1.4}
+.hero .btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:12px;font-weight:700;text-decoration:none;font-size:15px}
+.btn.p{background:var(--blue);color:#fff}
+.btn.g{border:1px solid #3a3a44;color:#F1F5F9}
+
+/* cards */
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:40px}
+.card{min-width:0;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:24px}
+.card .big{font-size:40px;font-weight:800;letter-spacing:-.03em;line-height:1;color:var(--blue-d);margin-bottom:12px}
+.card p{color:var(--muted);font-size:15.5px;margin-top:8px}
+.src{font:500 12px/1.4 var(--mono);color:var(--soft);margin-top:12px}
+
+/* pipeline */
+.pipe{margin-top:40px;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:28px}
+.pipe svg{width:100%;height:auto;display:block}
+.pipe text{font-family:'Plus Jakarta Sans',system-ui,sans-serif}
+.flow-dot{offset-rotate:0deg;animation:travel 5.2s linear infinite}
+@keyframes travel{from{offset-distance:0%}to{offset-distance:100%}}
+.fade-in{opacity:0;transform:translateY(14px);transition:opacity .6s ease, transform .6s ease}
+.fade-in.on{opacity:1;transform:none}
+.legend{display:flex;gap:22px;flex-wrap:wrap;margin-top:18px;font-size:14.5px;color:var(--muted)}
+.legend i{display:inline-block;width:22px;height:4px;border-radius:2px;vertical-align:middle;margin-right:8px}
+
+details{background:var(--surface);border:1px solid var(--line);border-radius:16px;margin-top:16px}
+details summary{cursor:pointer;padding:18px 22px;font-weight:700;list-style:none;display:flex;justify-content:space-between;align-items:center}
+details summary::-webkit-details-marker{display:none}
+details summary:after{content:"+";font:700 22px/1 var(--mono);color:var(--blue-d)}
+details[open] summary:after{content:"−"}
+details .in{padding:0 22px 22px;color:var(--muted);font-size:15.5px}
+code,.code{font-family:var(--mono);font-size:13.5px}
+.code{background:var(--night);color:#E3E7EE;border-radius:14px;padding:18px 20px;overflow-x:auto;white-space:pre;line-height:1.6;margin-top:14px}
+.code .c{color:#8A93A3}.code .k{color:var(--blue-l)}.code .s{color:#9AD0A8}.code .r{color:#FF8A80}.code .y{color:#FFD27A}
+
+/* calculator */
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:40px;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:28px}
+.calc label{display:block;font-weight:700;font-size:14.5px;margin:0 0 6px}
+.calc .row{margin-bottom:18px}
+.calc select,.calc input[type=range]{width:100%}
+.calc select{font:inherit;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:#fff}
+.calc .val{font:700 14px var(--mono);color:var(--blue-d);float:right}
+.out{background:var(--night);border-radius:18px;padding:26px;color:#F1F5F9;display:flex;flex-direction:column;justify-content:center}
+.out .n{font-size:64px;font-weight:800;letter-spacing:-.03em;line-height:1}
+.out .u{color:#B8C0CC;margin-top:6px}
+.meter{height:12px;border-radius:999px;background:#2C2C33;margin-top:22px;overflow:hidden}
+.meter i{display:block;height:100%;background:linear-gradient(90deg,var(--blue),var(--cyan));width:10%;transition:width .4s ease}
+.out .f{font:500 13px/1.6 var(--mono);color:#8A93A3;margin-top:16px}
+
+/* bars */
+.bars{margin-top:18px;display:flex;flex-direction:column;gap:12px}
+.bar{display:grid;grid-template-columns:230px 1fr 60px;gap:14px;align-items:center;font-size:15px}
+.bar .t{height:26px;border-radius:8px;background:#E8F1FC;overflow:hidden}
+.bar .t i{display:block;height:100%;background:var(--blue);border-radius:8px;width:0;transition:width 1s cubic-bezier(.2,.7,.2,1)}
+.bar .t i.base{background:#9DB8D9}
+.bar b{font:700 14px var(--mono);text-align:right}
+.split{display:grid;grid-template-columns:1fr 1.25fr;gap:24px;margin-top:40px;align-items:start}
+.path{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:24px;margin-bottom:16px}
+.path .big{font-size:44px;font-weight:800;color:var(--blue-d);line-height:1;letter-spacing:-.03em}
+
+/* side by side */
+.sbs{margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.slot{border:2px dashed #C9D3E0;border-radius:18px;padding:22px;background:#FAFBFD}
+.slot h3{font-size:17px}
+.slot .m{font:600 12.5px var(--mono);color:var(--soft);margin-top:4px}
+.slot ul{margin:14px 0 0;padding-left:18px;color:var(--muted);font-size:14.5px}
+.status{display:inline-flex;align-items:center;gap:8px;font:700 12.5px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:#8A4B00;background:#FFF3DF;border:1px solid #F3D3A1;border-radius:999px;padding:6px 12px;margin-top:22px}
+
+/* timeline */
+.tl{margin-top:44px;position:relative}
+.tl:before{content:"";position:absolute;left:118px;top:8px;bottom:8px;width:2px;background:var(--line)}
+.ev{display:grid;grid-template-columns:100px 1fr 1fr;gap:36px;position:relative;padding:0 0 30px}
+.ev .d{font:700 14px var(--mono);color:var(--blue-d);text-align:right;padding-top:2px}
+.ev:after{content:"";position:absolute;left:112px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--surface);border:3px solid var(--blue)}
+.ev .col{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:15px;color:var(--muted)}
+.ev .col b{display:block;color:var(--ink);font-size:12px;font-family:var(--mono);letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.ev .col.ok b{color:var(--green)}
+.ev .col.wait b{color:#8A4B00}
+.ev .col.off{background:transparent;border-style:dashed}
+.tlhead{display:grid;grid-template-columns:100px 1fr 1fr;gap:36px;font:700 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--soft);margin-top:36px}
+.tlhead span:first-child{visibility:hidden}
+
+/* limits */
+.lim .card{border-left:4px solid var(--amber)}
+
+/* LEAS */
+.leas{background:var(--night);color:#F1F5F9;border:0}
+.leas .eyebrow{color:var(--blue-l)}
+.leas h2{color:#F8FAFC}
+.leas .lede{color:#B8C0CC}
+.leas .card{background:var(--night2);border-color:var(--nightline)}
+.leas .card p{color:#B8C0CC}
+.leas h3{color:#F8FAFC}
+.term{background:#0B0B0D;border:1px solid var(--nightline);border-radius:16px;overflow:hidden;margin-top:40px}
+.term .bar2{display:flex;gap:7px;padding:12px 14px;border-bottom:1px solid var(--nightline)}
+.term .bar2 i{width:11px;height:11px;border-radius:50%;background:#3a3a44}
+.term pre{margin:0;padding:20px 22px;font:13.5px/1.65 var(--mono);color:#D6DBE3;overflow-x:auto}
+.term .r{color:#FF8A80;font-weight:700}.term .y{color:#FFD27A;font-weight:700}.term .g{color:#9AD0A8}.term .b{color:var(--blue-l)}.term .m{color:#8A93A3}
+.proc{display:grid;gap:14px;margin-top:40px}
+.proc .p{background:var(--night2);border:1px solid var(--nightline);border-radius:16px;padding:18px 20px}
+.proc .p h3{font-size:16px;margin-bottom:12px}
+.steps{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.steps span{font-size:13.5px;background:#25252B;border:1px solid #33333B;color:#D6DBE3;border-radius:999px;padding:6px 12px}
+.steps em{color:#5C6473;font-style:normal}
+.steps span.hl{background:rgba(61,155,240,.16);border-color:rgba(61,155,240,.5);color:#CFE6FB}
+.leas details{background:var(--night2);border-color:var(--nightline)}
+.leas details summary{color:#F1F5F9}
+.leas details .in{color:#B8C0CC}
+.figs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.figs figure{margin:0;background:#fff;border-radius:12px;padding:10px;max-height:520px;overflow-y:auto}
+.figs figcaption{font:600 12.5px var(--mono);color:#4A5568;padding:4px 2px 8px}
+.leas .bar .t{background:#25252B}
+.leas .bar b{color:#F1F5F9}
+.flag{white-space:nowrap;font:700 11.5px var(--mono);color:#0B2E12;background:#7FDCA2;border-radius:6px;padding:2px 7px;margin-left:8px;vertical-align:middle}
+.tbl{width:100%;border-collapse:collapse;margin-top:18px;font-size:14.5px}
+.tbl th,.tbl td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--nightline)}
+.tbl th{font:700 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:#8A93A3}
+.yes{color:#7FDCA2;font-weight:700}.na{color:#8A93A3}
+
+footer{background:#0B0B0D;color:#8A93A3;padding:48px 0;font-size:14.5px}
+footer .wrap{display:grid;grid-template-columns:2fr 1fr 1fr;gap:32px}
+footer b{color:#F1F5F9;display:block;margin-bottom:8px}
+footer a{color:#B8C0CC}
+
+@media (max-width:900px){
+  .hero-grid,.calc,.split,.grid2{grid-template-columns:1fr}
+  .grid4{grid-template-columns:1fr 1fr}
+  .grid3,.sbs,.figs{grid-template-columns:1fr}
+  .tl:before,.ev:after{display:none}
+  .ev,.tlhead{grid-template-columns:1fr;gap:10px}
+  .ev .d{text-align:left}
+  .tlhead{display:none}
+  .bar{grid-template-columns:118px minmax(0,1fr) 46px;font-size:13.5px;gap:10px}
+  .tbl{font-size:13px}.tbl th,.tbl td{padding:8px 6px}
+  .split > *{min-width:0}
+  footer .wrap{grid-template-columns:1fr}
+  nav a.l{display:none}
+  .pipe{overflow-x:auto;padding:18px}
+  .pipe svg{min-width:760px}
+}
+@media (max-width:560px){
+  .grid4{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  .flow-dot{animation:none}
+  .fade-in{opacity:1;transform:none;transition:none}
+  .bar .t i,.meter i{transition:none}
+}
+
+/* identidade: a rubrica como motivo visual */
+.rgrid{position:absolute;right:-40px;top:70px;display:grid;grid-template-columns:repeat(5,64px);gap:10px;opacity:.22;transform:rotate(-8deg);pointer-events:none}
+.rgrid i{height:40px;border-radius:9px;display:block;animation:cell .5s ease both}
+@keyframes cell{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+.hero .wrap{position:relative;z-index:1}
+.pips{display:inline-flex;gap:4px;vertical-align:middle;margin-right:12px;transform:translateY(-1px)}
+.pips i{width:10px;height:10px;border-radius:3px;display:block}
+.pips i:nth-child(1){background:#EF6339}.pips i:nth-child(2){background:#F4B625}.pips i:nth-child(3){background:#949CA8}.pips i:nth-child(4){background:#39A3EF}.pips i:nth-child(5){background:#24CCB5}
+.scale{display:flex;gap:0;margin-top:22px;border-radius:10px;overflow:hidden;max-width:520px}
+.scale span{flex:1;font:600 11.5px var(--mono);color:#0F172A;padding:7px 8px;text-align:center}
+/* entregas */
+.deliv{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+.dv{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:8px;position:relative;overflow:hidden}
+.dv:before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--lv,#39A3EF)}
+.dv .dcode{font:700 12.5px var(--mono);color:var(--blue-d);letter-spacing:.06em}
+.dv h3{font-size:17px}
+.dv p{color:var(--muted);font-size:14.5px}
+.dv .k{margin-top:auto;display:flex;gap:8px;flex-wrap:wrap;padding-top:8px}
+.dv .k a,.dv .k span{font:700 12.5px var(--mono);text-decoration:none;border-radius:8px;padding:6px 10px;background:#E8F1FC;color:var(--blue-d)}
+.dv .k span{background:#F1F3F7;color:var(--soft)}
+@media (max-width:900px){.rgrid{display:none}.deliv{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.rgrid i{animation:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#topo"><img src="assets/rp.png" alt="">RubricPro <span style="color:#8A93A3;font-weight:600">· LIAA</span></a>
+    <a class="l" href="#problema">Problema</a>
+    <a class="l" href="#como">Como funciona</a>
+    <a class="l" href="#custo">Custo de um modelo</a>
+    <a class="l" href="#lado">Lado a lado</a>
+    <a class="l" href="#linha">Linha do tempo</a>
+    <a class="l" href="#limites">Limites</a>
+    <a class="l" href="#entregas">Entregas</a>
+    <a class="cta" href="https://www.rubricpro.com.br/" target="_blank" rel="noopener">Abrir o app</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="topo">
+  <div class="rgrid" aria-hidden="true"><i style="background:#EF6339;animation-delay:0.25s"></i><i style="background:#F4B625;animation-delay:0.32s"></i><i style="background:#39A3EF;animation-delay:0.39s"></i><i style="background:#949CA8;animation-delay:0.46s"></i><i style="background:#39A3EF;animation-delay:0.53s"></i><i style="background:#EF6339;animation-delay:0.60s"></i><i style="background:#F4B625;animation-delay:0.67s"></i><i style="background:#F4B625;animation-delay:0.74s"></i><i style="background:#39A3EF;animation-delay:0.81s"></i><i style="background:#39A3EF;animation-delay:0.88s"></i><i style="background:#EF6339;animation-delay:0.95s"></i><i style="background:#949CA8;animation-delay:1.02s"></i><i style="background:#39A3EF;animation-delay:1.09s"></i><i style="background:#949CA8;animation-delay:1.16s"></i><i style="background:#24CCB5;animation-delay:1.23s"></i><i style="background:#EF6339;animation-delay:1.30s"></i><i style="background:#949CA8;animation-delay:1.37s"></i><i style="background:#F4B625;animation-delay:1.44s"></i><i style="background:#949CA8;animation-delay:1.51s"></i><i style="background:#24CCB5;animation-delay:1.58s"></i><i style="background:#EF6339;animation-delay:1.65s"></i><i style="background:#949CA8;animation-delay:1.72s"></i><i style="background:#F4B625;animation-delay:1.79s"></i><i style="background:#39A3EF;animation-delay:1.86s"></i><i style="background:#39A3EF;animation-delay:1.93s"></i><i style="background:#EF6339;animation-delay:2.00s"></i><i style="background:#F4B625;animation-delay:2.07s"></i><i style="background:#39A3EF;animation-delay:2.14s"></i><i style="background:#39A3EF;animation-delay:2.21s"></i><i style="background:#39A3EF;animation-delay:2.28s"></i></div>
+  <div class="wrap">
+    <p class="eyebrow">LIAA 2026.2 · Unipampa · módulo de IA do TCC</p>
+    <h1>Troque o modelo, <span>não o código.</span></h1>
+    <p class="lede">O RubricPro gera rubricas de avaliação com IA por um gateway único: cinco provedores atrás de um só contrato, saída validada e um fallback que nunca gasta o dinheiro do professor sem avisar.</p>
+    <div class="scale" aria-hidden="true"><span style="background:#EF6339">insuficiente</span><span style="background:#F4B625">em progresso</span><span style="background:#949CA8">adequado</span><span style="background:#39A3EF">bom</span><span style="background:#24CCB5">excelente</span></div>
+    <div class="hero-grid">
+      <div>
+        <div class="video" id="video">
+          <!-- Quando o vídeo estiver pronto: troque o bloco .ph por
+               <video src="assets/rubricpro.mp4" controls playsinline poster="assets/poster.jpg"></video>
+               ou um <iframe> do YouTube. -->
+          <div class="ph">
+            <div class="play"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="#fff"/></svg></div>
+            <p><b style="color:#F1F5F9">Vídeo de 2 a 3 minutos</b><br>em produção</p>
+          </div>
+        </div>
+        <div class="btns">
+          <a class="btn p" href="https://www.rubricpro.com.br/" target="_blank" rel="noopener">Abrir o RubricPro ↗</a>
+          <a class="btn g" href="#como">Ver como funciona</a>
+        </div>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>5</b><span>provedores: Groq, Gemini, OpenAI, Anthropic e OpenRouter</span></div>
+        <div class="stat"><b>13</b><span>modelos no catálogo, escolhidos pelo professor</span></div>
+        <div class="stat"><b>1</b><span>contrato (<code>IApiStrategy</code>) que todo provedor implementa</span></div>
+        <div class="stat"><b>0</b><span>trocas automáticas de modelo quando a chave é paga</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- PROBLEMA -->
+<section id="problema">
+  <div class="wrap">
+    <p class="eyebrow"><span class="pips" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>Critério 01 · O problema</p>
+    <h2>Gerar uma rubrica com IA é fácil. Manter isso de pé numa turma inteira, não.</h2>
+    <div class="grid4">
+      <div class="card fade-in"><div class="big">2–5 h</div><h3>Rubrica feita à mão</h3><p>Alinhar critérios, objetivos e descritores de cada nível consome horas do professor.</p><p class="src">estimativa do grupo, set/2026</p></div>
+      <div class="card fade-in"><div class="big">429</div><h3>A cota gratuita acaba</h3><p>Com uma chave única no servidor, o limite do provedor trava todo mundo ao mesmo tempo.</p></div>
+      <div class="card fade-in"><div class="big">1</div><h3>Um só fornecedor</h3><p>A versão anterior dependia só de Gemini e Groq. Trocar de modelo exigia mexer no código.</p></div>
+      <div class="card fade-in"><div class="big">{ ✗ }</div><h3>JSON que quebra</h3><p>Modelos devolvem texto extra, critérios sem todos os níveis ou pesos que não somam 100.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section id="como">
+  <div class="wrap">
+    <p class="eyebrow"><span class="pips" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>Critério 02 · Como funciona</p>
+    <h2>Um pedido, um contrato, uma validação.</h2>
+    <p class="lede">O professor descreve a atividade. O gateway calcula quantos tokens a rubrica precisa, escolhe a estratégia do provedor e só entrega o que passou pelo esquema.</p>
+
+    <div class="pipe">
+      <svg viewBox="0 0 1060 360" role="img" aria-label="Fluxo: pedido do professor, orçamento de tokens, gateway com registro de estratégias, cinco provedores, validação com Zod e rubrica entregue em streaming. Fallback só no modo gratuito.">
+        <defs>
+          <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#9DB8D9"/></marker>
+        </defs>
+        <!-- linhas -->
+        <g stroke="#9DB8D9" stroke-width="2.5" fill="none" marker-end="url(#ah)">
+          <path d="M150 180 H196"/>
+          <path d="M346 180 H392"/>
+          <path d="M552 180 C590 180 590 60 628 60"/>
+          <path d="M552 180 C590 180 590 120 628 120"/>
+          <path d="M552 180 H628"/>
+          <path d="M552 180 C590 180 590 240 628 240"/>
+          <path d="M552 180 C590 180 590 300 628 300"/>
+          <path d="M778 60 C820 60 820 180 856 180"/>
+          <path d="M778 120 C810 120 820 180 856 180"/>
+          <path d="M778 180 H856"/>
+          <path d="M778 240 C810 240 820 180 856 180"/>
+          <path d="M778 300 C820 300 820 180 856 180"/>
+        </g>
+        <!-- fallback (gratuito) -->
+        <path d="M703 82 C735 92 735 108 703 118" stroke="#00BCD4" stroke-width="2.5" fill="none" stroke-dasharray="5 5" marker-end="url(#ah)"/>
+        <!-- caixas -->
+        <g font-size="15" font-weight="700" fill="#0F172A" text-anchor="middle">
+          <rect x="10" y="140" width="140" height="80" rx="14" fill="#F4F6FA" stroke="#E3E7EE"/>
+          <text x="80" y="176">Pedido do</text><text x="80" y="196">professor</text>
+
+          <rect x="198" y="140" width="148" height="80" rx="14" fill="#F4F6FA" stroke="#E3E7EE"/>
+          <text x="272" y="176">Orçamento</text><text x="272" y="196">de tokens</text>
+
+          <rect x="394" y="120" width="158" height="120" rx="16" fill="#111113"/>
+          <text x="473" y="170" fill="#F8FAFC" font-size="17">Gateway</text>
+          <text x="473" y="193" fill="#8A93A3" font-size="12.5" font-weight="500">Registry + Strategy</text>
+          <text x="473" y="212" fill="#8A93A3" font-size="12.5" font-weight="500">fallback controlado</text>
+
+          <g font-size="14">
+            <rect x="630" y="40" width="148" height="40" rx="10" fill="#E8F1FC" stroke="#BBD6F5"/><text x="704" y="65">Groq</text>
+            <rect x="630" y="100" width="148" height="40" rx="10" fill="#E8F1FC" stroke="#BBD6F5"/><text x="704" y="125">Gemini</text>
+            <rect x="630" y="160" width="148" height="40" rx="10" fill="#FFFFFF" stroke="#E3E7EE"/><text x="704" y="185">OpenAI</text>
+            <rect x="630" y="220" width="148" height="40" rx="10" fill="#FFFFFF" stroke="#E3E7EE"/><text x="704" y="245">Anthropic</text>
+            <rect x="630" y="280" width="148" height="40" rx="10" fill="#FFFFFF" stroke="#E3E7EE"/><text x="704" y="305">OpenRouter</text>
+          </g>
+
+          <rect x="858" y="130" width="192" height="100" rx="16" fill="#1E88E5"/>
+          <text x="954" y="168" fill="#fff" font-size="16">Zod valida</text>
+          <text x="954" y="190" fill="#E3F0FC" font-size="12.5" font-weight="500">esquema, níveis e pesos</text>
+          <text x="954" y="210" fill="#E3F0FC" font-size="12.5" font-weight="500">→ rubrica em streaming</text>
+        </g>
+        <!-- pacotes animados -->
+        <circle r="6" fill="#1E88E5" class="flow-dot" style="offset-path:path('M150 180 H628');animation-delay:0s"/>
+        <circle r="6" fill="#1E88E5" class="flow-dot" style="offset-path:path('M150 180 H552 C590 180 590 60 628 60');animation-delay:-2.6s"/>
+        <circle r="6" fill="#00BCD4" class="flow-dot" style="offset-path:path('M778 180 H856');animation-duration:1.6s"/>
+        <text x="742" y="22" font-size="12.5" fill="#007C8C" font-weight="700" text-anchor="middle">fallback só no grátis</text>
+      </svg>
+      <div class="legend">
+        <span><i style="background:#BBD6F5"></i>Cota do sistema (modo gratuito)</span>
+        <span><i style="background:#E3E7EE"></i>Só com a chave pessoal do professor (BYOK)</span>
+        <span><i style="background:#00BCD4"></i>Fallback: tenta outro provedor grátis e avisa qual modelo respondeu</span>
+      </div>
+    </div>
+
+    <details>
+      <summary>Por que não há fallback com chave paga?</summary>
+      <div class="in">Se a chave é do professor, trocar de modelo sozinho pode gerar um custo que ele não esperava. Então, com Anthropic, OpenAI ou OpenRouter, o gateway tenta <b>só</b> o modelo escolhido e mostra um erro claro se falhar. Com chave pessoal no Groq ou no Gemini, o fallback fica dentro do mesmo provedor: a chave do servidor nunca entra no lugar.
+<div class="code"><span class="c">// src/lib/ai/modelCatalog.ts</span>
+<span class="k">if</span> (!PROVIDERS_WITH_SERVER_QUOTA.has(primaryProvider)) {
+  <span class="k">return</span> chain; <span class="c">// provedor pago: só o modelo selecionado</span>
+}</div></div>
+    </details>
+
+    <div class="calc" id="tokens">
+      <div>
+        <p class="eyebrow" style="margin-bottom:10px">Experimente · orçamento de tokens</p>
+        <h3 style="margin-bottom:18px">Quantos tokens de saída o gateway reserva?</h3>
+        <div class="row"><label for="cm">Modelo</label>
+          <select id="cm">
+            <option value="gemini">Gemini 3.8 Flash (Gemini)</option>
+            <option value="groq">GPT-OSS 120B (Groq)</option>
+            <option value="openai">GPT-4o mini (OpenAI)</option>
+            <option value="anthropic">Claude Haiku 5.5 (Anthropic)</option>
+          </select></div>
+        <div class="row"><label for="cc">Critérios <span class="val" id="vc">4</span></label><input id="cc" type="range" min="3" max="8" value="4"></div>
+        <div class="row"><label for="cl">Níveis por critério <span class="val" id="vl">4</span></label><input id="cl" type="range" min="3" max="8" value="4"></div>
+        <div class="row"><label><input id="ct" type="checkbox" checked> Modo pensante (raciocínio antes da rubrica)</label></div>
+      </div>
+      <div class="out" aria-live="polite">
+        <div class="n" id="tn">0</div>
+        <div class="u">tokens de saída reservados</div>
+        <div class="meter"><i id="tm"></i></div>
+        <div class="f" id="tf"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CUSTO DE UM MODELO -->
+<section id="custo">
+  <div class="wrap">
+    <p class="eyebrow"><span class="pips" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>Critério 03 · A pergunta de 15/09</p>
+    <h2>Quanto custa colocar um modelo novo?</h2>
+    <p class="lede">Depende de o provedor já existir. Medido no código do gateway, em linhas.</p>
+    <div class="split">
+      <div>
+        <div class="path"><div class="big">7 linhas</div><h3 style="margin-top:10px">Modelo de um provedor que já existe</h3><p style="color:var(--muted);margin-top:6px">Uma entrada no catálogo: id, provedor, rótulo, ordem e teto de tokens. Nada mais muda.</p></div>
+        <div class="path"><div class="big">~150–250</div><h3 style="margin-top:10px">Provedor novo</h3><p style="color:var(--muted);margin-top:6px">Uma classe que implementa <code>IApiStrategy</code> e uma linha de registro no gateway. O OpenRouter veio quase de graça: reaproveita a estratégia compatível com a OpenAI.</p></div>
+      </div>
+      <div class="card">
+        <h3>Linhas por estratégia</h3>
+        <div class="bars" id="bars">
+          <div class="bar"><span>Interface comum</span><div class="t"><i class="base" data-w="45"></i></div><b>45</b></div>
+          <div class="bar"><span>Gemini</span><div class="t"><i data-w="150"></i></div><b>150</b></div>
+          <div class="bar"><span>Groq</span><div class="t"><i data-w="158"></i></div><b>158</b></div>
+          <div class="bar"><span>OpenAI + OpenRouter</span><div class="t"><i data-w="180"></i></div><b>180</b></div>
+          <div class="bar"><span>Anthropic</span><div class="t"><i data-w="254"></i></div><b>254</b></div>
+          <div class="bar"><span>Base do modo pensante</span><div class="t"><i class="base" data-w="278"></i></div><b>278</b></div>
+        </div>
+        <p class="src">wc -l em src/routes/api/ai/strategies/, 23/11/2026 · barras claras = código compartilhado</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LADO A LADO -->
+<section id="lado">
+  <div class="wrap">
+    <p class="eyebrow"><span class="pips" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>Critério 04 · Próximo experimento</p>
+    <h2>A mesma rubrica, seis modelos, lado a lado.</h2>
+    <p class="lede">Mesmo pedido, mesmas instruções, dez repetições por modelo. Para cada um: conformidade ao esquema, tempo, tokens, custo por rubrica e taxa de fallback. Depois, professores avaliam as rubricas às cegas.</p>
+    <span class="status">● Protocolo em escrita · resultados entram aqui</span>
+    <div class="sbs">
+      <div class="slot"><h3>GPT-OSS 120B</h3><p class="m">Groq · cota do sistema</p><ul><li>conformidade: —</li><li>tempo médio: —</li><li>custo por rubrica: grátis</li></ul></div>
+      <div class="slot"><h3>Gemini 3.8 Flash</h3><p class="m">Gemini · cota do sistema</p><ul><li>conformidade: —</li><li>tempo médio: —</li><li>custo por rubrica: grátis</li></ul></div>
+      <div class="slot"><h3>GPT-4o mini</h3><p class="m">OpenAI · chave pessoal</p><ul><li>conformidade: —</li><li>tempo médio: —</li><li>custo por rubrica: —</li></ul></div>
+      <div class="slot"><h3>Claude Haiku 5.5</h3><p class="m">Anthropic · chave pessoal</p><ul><li>conformidade: —</li><li>tempo médio: —</li><li>custo por rubrica: —</li></ul></div>
+      <div class="slot"><h3>DeepSeek V3</h3><p class="m">OpenRouter · chave pessoal</p><ul><li>conformidade: —</li><li>tempo médio: —</li><li>custo por rubrica: —</li></ul></div>
+      <div class="slot"><h3>Llama 3.3 70B</h3><p class="m">OpenRouter · chave pessoal</p><ul><li>conformidade: —</li><li>tempo médio: —</li><li>custo por rubrica: —</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- LINHA DO TEMPO -->
+<section id="linha">
+  <div class="wrap">
+    <p class="eyebrow"><span class="pips" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>Critério 05 · Linha do tempo</p>
+    <h2>O combinado e o entregue.</h2>
+    <div class="tlhead"><span>data</span><span>Combinado com o professor</span><span>Entregue</span></div>
+    <div class="tl">
+      <div class="ev"><div class="d">15/09</div>
+        <div class="col"><b>Combinado</b>Focar no gateway, não na geração. Escolher entre modelos locais e APIs online. Medir o custo de adicionar um modelo.</div>
+        <div class="col ok"><b>Apresentado</b>Strategy, fallback, BYOK, modo pensante e validação com Zod.</div></div>
+      <div class="ev"><div class="d">29/09</div>
+        <div class="col off"><b>Adiado</b>Apresentação remarcada (sem internet no dia).</div>
+        <div class="col off"><b>—</b>Sem entrega.</div></div>
+      <div class="ev"><div class="d">31/10</div>
+        <div class="col off"><b>—</b>Trabalho entre apresentações.</div>
+        <div class="col ok"><b>Entregue</b>Geração multiprovedor com modo pensante e streaming no código do app.</div></div>
+      <div class="ev"><div class="d">03/11</div>
+        <div class="col"><b>Combinado</b>Escrever o protocolo dos experimentos e trazer os primeiros resultados.</div>
+        <div class="col ok"><b>Apresentado</b>Escopo fechado em APIs online, modelos pelo catálogo, orçamento de tokens, fallback só no grátis, demonstração ao vivo.</div></div>
+      <div class="ev"><div class="d">10–20/11</div>
+        <div class="col off"><b>—</b>Evolução do módulo de IA.</div>
+        <div class="col ok"><b>Entregue</b>Análise da rubrica com IA no editor, resumo da turma, teste real da chave pessoal, cota diária, seletor único de provedor e modelo.</div></div>
+      <div class="ev"><div class="d">próximo</div>
+        <div class="col wait"><b>Em aberto</b>Protocolo e primeira rodada do lado a lado.</div>
+        <div class="col off"><b>—</b>Os resultados entram na seção acima.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- LIMITES -->
+<section id="limites" class="lim">
+  <div class="wrap">
+    <p class="eyebrow"><span class="pips" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>Critério 06 · Rigor</p>
+    <h2>O que sustentamos, e o que ainda não.</h2>
+    <div class="grid2">
+      <div class="card"><h3>Os números de 03/11 ainda não têm protocolo</h3><p>“Menos de 15 s” e “zero erro estrutural” vieram de uso e testes do grupo. Só valem depois do experimento lado a lado.</p></div>
+      <div class="card"><h3>Esquema certo não é rubrica boa</h3><p>O Zod garante a forma (critérios, níveis, pesos). A qualidade pedagógica precisa de avaliação por professores.</p></div>
+      <div class="card"><h3>Só APIs online</h3><p>Modelos locais pequenos ficaram fora do escopo da disciplina, por decisão combinada em 15/09.</p></div>
+      <div class="card"><h3>BYOK muda quem paga, não o custo</h3><p>A chave pessoal tira a conta do servidor, mas o professor paga o provedor. Por isso não há troca automática.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ENTREGAS -->
+<section id="entregas">
+  <div class="wrap">
+    <p class="eyebrow"><span class="pips" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>Critério 07 · Entregas</p>
+    <h2>Tudo o que foi apresentado, num lugar só.</h2>
+    <p class="lede">As entregas da LIAA com material próprio. As semanais de evolução estão resumidas na linha do tempo.</p>
+    <div class="deliv">
+      <div class="dv" style="--lv:#F4B625"><span class="dcode">A01–A03 · ago–set</span><h3>Ideação, investigação e plano experimental</h3><p>Da ideia do gateway ao plano de experimentos, entregues no Classroom.</p><div class="k"><span>anexos no Classroom</span></div></div>
+      <div class="dv" style="--lv:#949CA8"><span class="dcode">A04 · 15/09</span><h3>Gateway multimodelo e BYOK</h3><p>Primeira apresentação: Strategy, fallback, BYOK, modo pensante e Zod.</p><div class="k"><a href="assets/entregas/a04-apresentacao-gateway.pdf" target="_blank" rel="noopener">PDF ↗</a></div></div>
+      <div class="dv" style="--lv:#39A3EF"><span class="dcode">A11 · 03/11</span><h3>Escopo fechado e demonstração</h3><p>APIs online, modelos pelo catálogo, orçamento de tokens e fallback só no grátis.</p><div class="k"><a href="assets/entregas/a11-defesa-modulo-ia.pdf" target="_blank" rel="noopener">PDF ↗</a></div></div>
+      <div class="dv" style="--lv:#24CCB5"><span class="dcode">A13 e A15 · nov</span><h3>Este site, com vídeo</h3><p>Contexto, problema, solução, evolução e o vídeo animado no topo.</p><div class="k"><a href="#topo">você está aqui</a></div></div>
+      <div class="dv" style="--lv:#24CCB5"><span class="dcode">A14 · nov</span><h3>Vídeo de retrospectiva</h3><p>Até 2 minutos, produzido com IA, sobre o que o projeto já fez.</p><div class="k"><span>em produção</span></div></div>
+      <div class="dv" style="--lv:#39A3EF"><span class="dcode">A17 · 24/11</span><h3>Dicas de IA e agentes</h3><p>Seis dicas tiradas do RubricPro, do GitExpert Check e da avaliação de artefatos.</p><div class="k"><!-- quando exportar os slides: <a href="assets/entregas/a17-dicas-ia.pdf" target="_blank" rel="noopener">PDF ↗</a> --><span>slides em aula</span></div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div><b>RubricPro · gateway multimodelo</b>Laboratório de Inteligência Artificial Aplicada (LIAA), 2026.2 · Engenharia de Software · Unipampa, Alegrete. Prof. Diego Kreutz.<br><br>Código do RubricPro privado (TCC). A arquitetura e os números desta página vêm do repositório, conferidos em 23/11/2026.</div>
+    <div><b>Quem fez</b>Erik Fontella (módulo de IA)<br>André Medeiros<br>Pedro Guilherme<br><span style="color:#6B7280">Plataforma RubricPro: Matheus Lemes Fialho e Erik Fontella</span></div>
+    <div><b>Links</b><a href="https://www.rubricpro.com.br/" target="_blank" rel="noopener">rubricpro.com.br</a><br><a href="https://leas-erik.github.io/" target="_blank" rel="noopener">Meu portfólio da LEAS</a><br><a href="https://unipampa4all.github.io/disciplinas/liaa/20262/projetos_html/" target="_blank" rel="noopener">Mapa da turma</a></div>
+  </div>
+</footer>
+
+<script>
+// orçamento de tokens: mesma fórmula de estimateRubricTokenBudget (src/lib/ai/modelCatalog.ts)
+(function(){
+  const $=id=>document.getElementById(id);
+  const cap=16384;
+  function calc(){
+    const p=$('cm').value, c=+$('cc').value, l=+$('cl').value, think=$('ct').checked;
+    $('vc').textContent=c; $('vl').textContent=l;
+    const claude=p==='anthropic', nativeThink=claude||p==='openai';
+    const desc=c*l*55, base=450, th=think?(nativeThink?6000:2200):0, mult=claude?1.3:1;
+    const raw=Math.ceil((base+desc+th)*mult*1.25);
+    const v=Math.min(Math.max(raw,1536),cap);
+    $('tn').textContent=v.toLocaleString('pt-BR');
+    $('tm').style.width=(v/cap*100).toFixed(1)+'%';
+    $('tf').innerHTML=`(450 + ${c}×${l}×55 + ${th.toLocaleString('pt-BR')}) × ${mult.toString().replace('.',',')} × 1,25<br>piso 1.536 · teto do modelo ${cap.toLocaleString('pt-BR')}`;
+  }
+  ['cm','cc','cl','ct'].forEach(id=>$(id).addEventListener('input',calc));
+  calc();
+
+  // barras e entradas animadas ao rolar
+  const max=Math.max(...[...document.querySelectorAll('#bars i')].map(i=>+i.dataset.w));
+  const io=new IntersectionObserver(es=>es.forEach(e=>{
+    if(!e.isIntersecting) return;
+    const el=e.target;
+    if(el.classList.contains('bars')) el.querySelectorAll('i').forEach(i=>{const m=+(i.dataset.max||max); i.style.width=(+i.dataset.w/m*100)+'%';});
+    else el.classList.add('on');
+    io.unobserve(el);
+  }),{threshold:.25});
+  document.querySelectorAll('.bars,.fade-in').forEach(el=>io.observe(el));
+})();
+</script>
+</body>
+</html>
