@@ -228,6 +228,73 @@ footer a{color:#B8C0CC}
 .dv .k span{background:#F1F3F7;color:var(--soft)}
 @media (max-width:900px){.rgrid{display:none}.deliv{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){.rgrid i{animation:none}}
+
+/* lado a lado: resultados e gráficos */
+.status.ok{color:#0B5D2E;background:#E3F5EA;border-color:#A9DDBD}
+.kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px}
+.kpi .card b{display:block;font-size:40px;font-weight:800;letter-spacing:-.03em;line-height:1;color:var(--ink)}
+.kpi .card span{display:block;color:var(--muted);font-size:14.5px;margin-top:12px;line-height:1.45}
+.ch{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:24px;margin-top:16px;min-width:0}
+.ch .sub{color:var(--muted);font-size:14.5px;margin-top:6px;line-height:1.5}
+.ch .note{font-size:13.5px;color:var(--muted);margin-top:16px;line-height:1.55}
+.ch .note b{color:var(--ink)}
+.lg{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:14px;font-size:13.5px;color:var(--muted)}
+.lg span{display:inline-flex;align-items:center;gap:7px}
+.sw{width:10px;height:10px;border-radius:3px;display:inline-block;flex:none}
+.lg .k-dot{width:10px;height:10px;border-radius:50%;background:var(--ink)}
+.lg .k-ring{width:10px;height:10px;border-radius:50%;border:2px solid var(--muted);background:#fff}
+.lg .k-wk{width:18px;height:2px;background:var(--ink);position:relative;opacity:.75}
+.lg .k-wk:before,.lg .k-wk:after{content:"";position:absolute;top:-4px;width:2px;height:10px;background:inherit}
+.lg .k-wk:before{left:0}.lg .k-wk:after{right:0}
+.lg .k-ci{width:18px;height:2px;background:var(--muted)}
+.plot{margin-top:18px}
+.grp{font:700 11.5px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--soft);margin:16px 0 4px}
+.grp:first-child{margin-top:0}
+.r,.ax{display:grid;grid-template-columns:136px minmax(0,1fr) 64px;gap:12px;align-items:center}
+.r .nm{font-size:14px;line-height:1.2;display:flex;align-items:center;gap:8px;min-width:0}
+.r .v{font:600 13px var(--mono);text-align:right;font-variant-numeric:tabular-nums;color:var(--ink);white-space:nowrap}
+.trk{position:relative;height:32px;outline:none;border-radius:6px}
+.trk:focus-visible{box-shadow:0 0 0 2px var(--blue)}
+.gl{position:absolute;top:0;bottom:0;width:1px;background:#EDF0F5}
+.bx{position:absolute;left:0;top:10px;height:12px;border-radius:0 4px 4px 0}
+.wk{position:absolute;top:15px;height:2px;background:var(--ink);opacity:.75}
+.wk:before,.wk:after{content:"";position:absolute;top:-4px;width:2px;height:10px;background:inherit}
+.wk:before{left:0}.wk:after{right:0}
+.ci{position:absolute;top:15px;height:2px;border-radius:1px;opacity:.55}
+.mk{position:absolute;top:16px;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;box-shadow:0 0 0 2px #fff}
+.mk.ink{background:var(--ink)}
+.mk.ring{background:#fff;border:2px solid;box-shadow:0 0 0 2px #fff}
+.ax{margin-top:4px}
+.ax .tk{position:relative;height:16px;font:500 11.5px var(--mono);color:var(--soft);font-variant-numeric:tabular-nums}
+.ax .tk span{position:absolute;top:0;transform:translateX(-50%);white-space:nowrap}
+.ax .tk span.f{transform:none}
+.ax .tk span.l{transform:translateX(-100%)}
+.ax .at{font:500 11.5px var(--mono);color:var(--soft);text-align:right}
+#tip{position:fixed;z-index:50;pointer-events:none;background:var(--night);color:#F1F5F9;font-size:13px;line-height:1.5;padding:10px 12px;border-radius:10px;max-width:290px;opacity:0;transition:opacity .12s;box-shadow:0 8px 24px rgba(15,23,42,.25)}
+#tip.on{opacity:1}
+#tip b{display:block;font-size:13.5px;margin-bottom:2px}
+#tip span{color:#B8C0CC}
+.find h3{font-size:17px}
+.slot.done{border:1px solid var(--line);background:var(--surface)}
+.slot h3{display:flex;align-items:center;gap:9px}
+.slot ul b{color:var(--ink);font-family:var(--mono);font-size:13.5px;font-weight:700}
+.tblw{overflow-x:auto;margin-top:4px}
+.tbl.lt{min-width:760px;font-size:13px}
+.tbl.lt th,.tbl.lt td{border-bottom:1px solid var(--line);padding:8px 8px;white-space:nowrap}
+.tbl.lt td{color:var(--ink);font-variant-numeric:tabular-nums}
+.tbl.lt th{color:var(--soft)}
+.tbl.lt td.c{font:600 12px var(--mono);color:var(--muted)}
+#lado details ul{margin:10px 0 0;padding-left:20px}
+@media (max-width:900px){
+  .kpi{grid-template-columns:1fr 1fr}
+  .kpi .card b{font-size:32px}
+  .r,.ax{grid-template-columns:96px minmax(0,1fr) 54px;gap:8px}
+  .r .nm{font-size:12.5px}
+  .r .v{font-size:12px}
+  .ch{padding:18px}
+}
+@media (max-width:560px){.kpi{grid-template-columns:1fr}}
+.tbl.lt th{white-space:normal;vertical-align:bottom;line-height:1.3}
 </style>
 </head>
 <body>
@@ -426,18 +493,83 @@ footer a{color:#B8C0CC}
 <!-- LADO A LADO -->
 <section id="lado">
   <div class="wrap">
-    <p class="eyebrow"><span class="pips" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>Critério 04 · Próximo experimento</p>
-    <h2>A mesma rubrica, seis modelos, lado a lado.</h2>
-    <p class="lede">Mesmo pedido, mesmas instruções, dez repetições por modelo. Para cada um: conformidade ao esquema, tempo, tokens, custo por rubrica e taxa de fallback. Depois, professores avaliam as rubricas às cegas.</p>
-    <span class="status">● Protocolo em escrita · resultados entram aqui</span>
-    <div class="sbs">
-      <div class="slot"><h3>GPT-OSS 120B</h3><p class="m">Groq · cota do sistema</p><ul><li>conformidade: —</li><li>tempo médio: —</li><li>custo por rubrica: grátis</li></ul></div>
-      <div class="slot"><h3>Gemini 3.8 Flash</h3><p class="m">Gemini · cota do sistema</p><ul><li>conformidade: —</li><li>tempo médio: —</li><li>custo por rubrica: grátis</li></ul></div>
-      <div class="slot"><h3>GPT-4o mini</h3><p class="m">OpenAI · chave pessoal</p><ul><li>conformidade: —</li><li>tempo médio: —</li><li>custo por rubrica: —</li></ul></div>
-      <div class="slot"><h3>Claude Haiku 5.5</h3><p class="m">Anthropic · chave pessoal</p><ul><li>conformidade: —</li><li>tempo médio: —</li><li>custo por rubrica: —</li></ul></div>
-      <div class="slot"><h3>DeepSeek V3</h3><p class="m">OpenRouter · chave pessoal</p><ul><li>conformidade: —</li><li>tempo médio: —</li><li>custo por rubrica: —</li></ul></div>
-      <div class="slot"><h3>Llama 3.3 70B</h3><p class="m">OpenRouter · chave pessoal</p><ul><li>conformidade: —</li><li>tempo médio: —</li><li>custo por rubrica: —</li></ul></div>
+    <p class="eyebrow"><span class="pips" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>Critério 04 · Experimento</p>
+    <h2>A mesma rubrica, lado a lado.</h2>
+    <p class="lede">Mesmo pedido, mesmas instruções, 20 execuções por modelo. O banco de testes chama a estratégia de cada provedor direto, sem fallback, e confere o que voltou. O C1 é a rubrica de TCC 4×4 que todo modelo recebe; o C2, um seminário 5×4 com pesos que somam 100. Nesta rodada entraram os três modelos com chave disponível.</p>
+    <span class="status ok">● Rodada oficial · 23/11/2026 · 60 execuções · 3 de 6 modelos</span>
+
+    <div class="kpi">
+      <div class="card"><b>43/43</b><span>rubricas do modo pensante que chegaram vieram em JSON válido, sem reparo, e cumpriram todos os invariantes</span></div>
+      <div class="card"><b>2,5 s</b><span>mediana do GPT-OSS 120B (Groq) para a rubrica inteira do C1. Claude Haiku 5.5: 9,0 s. Gemini 2.5 Flash: 14,5 s</span></div>
+      <div class="card"><b>US$ 0,73</b><span>por mil rubricas com o Claude Haiku 5.5 na chave pessoal (C1, estimado)</span></div>
+      <div class="card"><b>0/5</b><span>rubricas válidas do Gemini 2.5 Flash em JSON direto. No modo pensante, com mais tokens reservados: 10/10</span></div>
     </div>
+
+    <div class="ch" id="ch-tempo">
+      <h3>Quanto tempo até a rubrica completa</h3>
+      <p class="sub">Mediana do tempo total por modelo, com a faixa entre o 1º e o 3º quartil. O ponto escuro marca quando chegou o primeiro token.</p>
+      <div class="lg" data-legend="time"></div>
+      <div class="plot" data-plot="time"></div>
+      <p class="note">O Gemini 2.5 Flash raciocina por dentro antes de escrever: cerca de 8 s sem nenhum token visível. O Claude Haiku 5.5 começa em 0,6 s, mas escreve a justificativa pedagógica antes da rubrica. Tempos de uma rodada, num computador, em 23/11.</p>
+    </div>
+
+    <div class="grid2" style="margin-top:16px">
+      <div class="ch" id="ch-conf" style="margin-top:0">
+        <h3>Rubricas válidas sem reparo</h3>
+        <p class="sub">JSON puro que passou no esquema Zod sem conserto, com o intervalo de confiança de 95% (Wilson). Com n = 5 ou 10, “100%” ainda quer dizer “pelo menos 57% ou 72%”.</p>
+        <div class="lg" data-legend="conf"></div>
+        <div class="plot" data-plot="conf"></div>
+        <p class="note"><b>C2, Gemini:</b> 2 das 5 chamadas voltaram 429 da cota gratuita. As 3 que responderam passaram em tudo.<br><b>JSON direto, Gemini:</b> 4 respostas pararam em cerca de 220 caracteres. O pipeline do app reparou a quinta (○), mas ela saiu com 1 critério dos 4 pedidos: passou no esquema e falhou nos invariantes.</p>
+      </div>
+      <div class="ch" id="ch-custo" style="margin-top:0">
+        <h3>Custo por mil rubricas</h3>
+        <p class="sub">Em US$, pela mediana de cada modelo no modo pensante. Groq e Gemini rodam na cota gratuita do servidor; o valor é o que custariam no plano pago.</p>
+        <div class="lg" data-legend="cost"></div>
+        <div class="plot" data-plot="cost"></div>
+        <p class="note">Tokens estimados por caracteres ÷ 4, com os preços de 23/11 em <code>prices.json</code>. O raciocínio interno do Gemini é cobrado como saída e não aparece no texto, então o valor dele é um piso.</p>
+      </div>
+    </div>
+
+    <div class="grid3" style="margin-top:16px">
+      <div class="card find"><h3>O orçamento de tokens decide o Gemini</h3><p>Em JSON direto, o gateway reserva 1.663 tokens. O Gemini 2.5 Flash gasta quase tudo raciocinando e corta o JSON. No modo pensante, a reserva sobe para 4.413 e ele faz 10 de 10. A calculadora acima dá os mesmos dois números.</p><p class="src">max_tokens em runs.jsonl · estimateRubricTokenBudget</p></div>
+      <div class="card find"><h3>Uma frase parecia derrubar o Claude</h3><p>No piloto, o Claude Haiku 5.5 recusava a geração (<code>stop_reason: refusal</code>). O prompt herdado pedia a “corrente de pensamento (Chain of Thought)”, e o pedido explícito de expor o raciocínio provavelmente acionava um filtro do modelo (hipótese nossa; a API não diz o motivo). Trocamos por “justificativa pedagógica estruturada” e desligamos o raciocínio oculto, que era redundante: 20 de 20.</p><p class="src">BaseThinkingStrategy.ts · piloto de 23/11</p></div>
+      <div class="card find"><h3>O Gemini 3.8 Flash ficou de fora</h3><p>No piloto, ele devolvia 503 (alta demanda) no servidor do Google, e em produção o fallback do app já trocava sozinho para o 2.5 Flash. A rodada usou o 2.5 Flash, o modelo estável do catálogo. Mesmo assim, a cota gratuita barrou 2 das 20 chamadas.</p><p class="src">meta.json · erros por código no summary.json</p></div>
+    </div>
+
+    <div class="sbs">
+      <div class="slot done"><h3><i class="sw" style="background:#1E88E5"></i>GPT-OSS 120B</h3><p class="m">Groq · cota do sistema</p><ul><li>modo pensante: <b>15/15</b></li><li>JSON direto: <b>5/5</b></li><li>tempo no C1: <b>2,5 s</b></li><li>por rubrica: <b>US$ 0,0007</b> no plano pago; no app, grátis</li></ul></div>
+      <div class="slot done"><h3><i class="sw" style="background:#EB6834"></i>Gemini 2.5 Flash</h3><p class="m">Gemini · cota do sistema · no lugar do 3.8 Flash</p><ul><li>modo pensante: <b>13/15</b> (2 × 429)</li><li>JSON direto: <b>0/5</b></li><li>tempo no C1: <b>14,5 s</b></li><li>por rubrica: <b>≥ US$ 0,0041</b> no plano pago; no app, grátis</li></ul></div>
+      <div class="slot done"><h3><i class="sw" style="background:#1BAF7A"></i>Claude Haiku 5.5</h3><p class="m">Anthropic · chave pessoal</p><ul><li>modo pensante: <b>15/15</b></li><li>JSON direto: <b>5/5</b></li><li>tempo no C1: <b>9,0 s</b></li><li>por rubrica: <b>US$ 0,0007</b></li></ul></div>
+      <div class="slot"><h3>GPT-4o mini</h3><p class="m">OpenAI · chave pessoal</p><ul><li>fora desta rodada: faltou a chave da OpenAI no banco de testes</li><li>preço já conferido: US$ 0,15 / 0,60 por 1M tokens</li></ul></div>
+      <div class="slot"><h3>DeepSeek V3</h3><p class="m">OpenRouter · chave pessoal</p><ul><li>fora desta rodada: faltou a chave do OpenRouter</li><li>preço típico: US$ 0,26 / 1,03 por 1M tokens</li></ul></div>
+      <div class="slot"><h3>Llama 3.3 70B</h3><p class="m">OpenRouter · chave pessoal</p><ul><li>fora desta rodada: faltou a chave do OpenRouter</li><li>preço típico: US$ 0,10 / 0,32 por 1M tokens</li></ul></div>
+    </div>
+
+    <details>
+      <summary>Tabela completa da rodada</summary>
+      <div class="in">
+        <div class="tblw"><table class="tbl lt" id="tbl-lado">
+          <thead><tr><th>Caso</th><th>Modelo</th><th>n</th><th>Sem reparo (IC95)</th><th>Pipeline</th><th>Invariantes</th><th>1º token (s)</th><th>Total (s) [p25–p75]</th><th>Tokens saída</th><th>US$/rubrica</th></tr></thead>
+          <tbody></tbody>
+        </table></div>
+        <p class="src">* custo equivalente do plano pago; no app, Groq e Gemini usam a cota gratuita do servidor. Gemini C2: 2 chamadas com 429. Gemini JSON direto: custo de respostas cortadas.<br>bench/results/2026-11-23T16-25-56/summary.json · medianas sobre as chamadas que responderam · tokens e custo estimados</p>
+      </div>
+    </details>
+    <details>
+      <summary>Como foi medido</summary>
+      <div class="in">
+        <p>Um endpoint só de desenvolvimento chama <code>strategy.streamText</code> de cada provedor, sem fallback, cota ou Firestore, a 0,7 de temperatura e com 2,5 s entre chamadas. Para cada resposta:</p>
+        <ul>
+          <li><b>sem reparo</b>: o texto já era JSON e passou no <code>RubricJsonSchema</code> sem nenhum conserto;</li>
+          <li><b>pipeline</b>: passou no mesmo caminho de validação do app, com os reparos automáticos;</li>
+          <li><b>invariantes</b>: número de critérios e de níveis pedido, um descritor por nível, ordem dos valores, pesos somando 100 (C2), descritores não vazios e distintos, texto em português;</li>
+          <li><b>tempo</b>: até o primeiro token e até o fim do streaming, em milissegundos;</li>
+          <li><b>custo</b>: caracteres ÷ 4 × preço da página de cada provedor em 23/11.</li>
+        </ul>
+        <p style="margin-top:10px">Commit <code>4934bd5</code>, git limpo. Prompts com hash fixo (C1 <code>4d7f329b…</code>, C2 <code>ca2a2861…</code>). O pacote para avaliação cega já existe (rubricas A, B e C do C1, escala de 1 a 5 em 5 itens) e ainda espera os professores.</p>
+      </div>
+    </details>
+    <p class="src">bench/results/2026-11-23T16-25-56 · RubricBench · commit 4934bd5</p>
   </div>
 </section>
 
@@ -463,9 +595,12 @@ footer a{color:#B8C0CC}
       <div class="ev"><div class="d">10–20/11</div>
         <div class="col off"><b>—</b>Evolução do módulo de IA.</div>
         <div class="col ok"><b>Entregue</b>Análise da rubrica com IA no editor, resumo da turma, teste real da chave pessoal, cota diária, seletor único de provedor e modelo.</div></div>
+      <div class="ev"><div class="d">23/11</div>
+        <div class="col"><b>Combinado</b>Protocolo e primeira rodada do lado a lado.</div>
+        <div class="col ok"><b>Entregue</b>RubricBench: protocolo, 60 execuções em 3 modelos e pacote para avaliação cega. Resultados na seção Lado a lado.</div></div>
       <div class="ev"><div class="d">próximo</div>
-        <div class="col wait"><b>Em aberto</b>Protocolo e primeira rodada do lado a lado.</div>
-        <div class="col off"><b>—</b>Os resultados entram na seção acima.</div></div>
+        <div class="col wait"><b>Em aberto</b>Rodar GPT-4o mini, DeepSeek V3 e Llama 3.3 70B. Avaliação cega com professores.</div>
+        <div class="col off"><b>—</b>Os resultados entram na seção Lado a lado.</div></div>
     </div>
   </div>
 </section>
@@ -476,7 +611,7 @@ footer a{color:#B8C0CC}
     <p class="eyebrow"><span class="pips" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>Critério 06 · Rigor</p>
     <h2>O que sustentamos, e o que ainda não.</h2>
     <div class="grid2">
-      <div class="card"><h3>Os números de 03/11 ainda não têm protocolo</h3><p>“Menos de 15 s” e “zero erro estrutural” vieram de uso e testes do grupo. Só valem depois do experimento lado a lado.</p></div>
+      <div class="card"><h3>Agora com protocolo, mas com n pequeno</h3><p>São 5 a 10 execuções por modelo e caso, numa rodada, num computador. “Menos de 15 s” vale para as medianas; o 3º quartil do Gemini 2.5 Flash passou disso (15,7 s no C1). “Zero erro estrutural” vale para o modo pensante (43/43); em JSON direto, o Gemini errou 5 de 5. Tokens e custo são estimados (≈4 caracteres por token).</p></div>
       <div class="card"><h3>Esquema certo não é rubrica boa</h3><p>O Zod garante a forma (critérios, níveis, pesos). A qualidade pedagógica precisa de avaliação por professores.</p></div>
       <div class="card"><h3>Só APIs online</h3><p>Modelos locais pequenos ficaram fora do escopo da disciplina, por decisão combinada em 15/09.</p></div>
       <div class="card"><h3>BYOK muda quem paga, não o custo</h3><p>A chave pessoal tira a conta do servidor, mas o professor paga o provedor. Por isso não há troca automática.</p></div>
@@ -538,6 +673,142 @@ footer a{color:#B8C0CC}
     io.unobserve(el);
   }),{threshold:.25});
   document.querySelectorAll('.bars,.fade-in').forEach(el=>io.observe(el));
+})();
+
+// lado a lado: dados de bench/results/2026-11-23T16-25-56/summary.json (commit 4934bd5)
+(function(){
+  const M={
+    groq:{n:'GPT-OSS 120B',p:'Groq · cota do sistema',c:'#1E88E5',price:'US$ 0,15 / 0,60 por 1M (in/out)',free:true},
+    gem:{n:'Gemini 2.5 Flash',p:'Gemini · cota do sistema',c:'#EB6834',price:'US$ 0,30 / 2,50 por 1M (in/out)',free:true},
+    cla:{n:'Claude Haiku 5.5',p:'Anthropic · chave pessoal',c:'#1BAF7A',price:'US$ 0,10 / 0,50 por 1M (in/out)',free:false}
+  };
+  const ORDER=['groq','gem','cla'];
+  // n = execuções; ok = responderam; st = sem reparo; pl = pipeline; inv = invariantes (após pipeline)
+  const R=[
+    {g:'C1t',m:'groq',n:10,ok:10,st:10,pl:10,inv:10,ci:[0.7225,1],ttft:616.5,tot:2534.5,p25:2407.75,p75:2672,tk:987,cost:0.00069945},
+    {g:'C1t',m:'gem', n:10,ok:10,st:10,pl:10,inv:10,ci:[0.7225,1],ttft:8007.5,tot:14475,p25:13536,p75:15739,tk:1535,cost:0.004052},
+    {g:'C1t',m:'cla', n:10,ok:10,st:10,pl:10,inv:10,ci:[0.7225,1],ttft:605.5,tot:9035,p25:8626.25,p75:9317,tk:1318.5,cost:0.00073075},
+    {g:'C2t',m:'groq',n:5,ok:5,st:5,pl:5,inv:5,ci:[0.5655,1],ttft:568,tot:3112,p25:2736,p75:3343,tk:1167,cost:0.0008091},
+    {g:'C2t',m:'gem', n:5,ok:3,st:3,pl:3,inv:3,ci:[0.2307,0.8824],ttft:8834,tot:15634,p25:14836,p75:16627.5,tk:1787,cost:0.0046853,err:'2 × 429 (cota gratuita)'},
+    {g:'C2t',m:'cla', n:5,ok:5,st:5,pl:5,inv:5,ci:[0.5655,1],ttft:1264,tot:10786,p25:9846,p75:10934,tk:1365,cost:0.0007551},
+    {g:'C1j',m:'groq',n:5,ok:5,st:5,pl:5,inv:5,ci:[0.5655,1],ttft:575,tot:2033,p25:1945,p75:2178,tk:791,cost:0.00058275},
+    {g:'C1j',m:'gem', n:5,ok:5,st:0,pl:1,inv:0,ci:[0,0.4345],ttft:8081,tot:8277,p25:8124,p75:8502,tk:55,cost:0.0003538,note:'4 respostas cortadas (~220 caracteres); a reparada tinha 1 critério de 4'},
+    {g:'C1j',m:'cla', n:5,ok:5,st:5,pl:5,inv:5,ci:[0.5655,1],ttft:548,tot:6460,p25:6080,p75:6478,tk:927,cost:0.0005356}
+  ];
+  const G={C1t:'C1 · TCC 4×4 · modo pensante',C2t:'C2 · seminário 5×4 ponderada · modo pensante',C1j:'C1 · JSON direto, sem raciocínio'};
+  const GS={C1t:'C1 TCC, modo pensante',C2t:'C2 seminário, modo pensante',C1j:'C1 TCC, JSON direto'};
+  const nf=(x,d)=>x.toLocaleString('pt-BR',{minimumFractionDigits:d,maximumFractionDigits:d});
+  const s=ms=>nf(ms/1000,ms<10000?2:1)+' s';
+  const s1=ms=>nf(ms/1000,1)+' s';
+  const pct=x=>Math.round(x*100)+'%';
+  const el=(t,c,h)=>{const e=document.createElement(t); if(c) e.className=c; if(h!=null) e.innerHTML=h; return e;};
+
+  // tooltip
+  const tip=el('div',null); tip.id='tip'; tip.setAttribute('aria-hidden','true'); document.body.appendChild(tip);
+  function place(x,y){const w=tip.offsetWidth,h=tip.offsetHeight; let L=x+14,T=y+14; if(L+w>innerWidth-8) L=x-w-14; if(T+h>innerHeight-8) T=y-h-14; tip.style.left=Math.max(8,L)+'px'; tip.style.top=Math.max(8,T)+'px';}
+  function bindTip(node,html){
+    node.addEventListener('pointerenter',e=>{tip.innerHTML=html; tip.classList.add('on'); place(e.clientX,e.clientY);});
+    node.addEventListener('pointermove',e=>place(e.clientX,e.clientY));
+    node.addEventListener('pointerleave',()=>tip.classList.remove('on'));
+    node.addEventListener('focus',()=>{tip.innerHTML=html; tip.classList.add('on'); const b=node.getBoundingClientRect(); place(b.left+b.width/2,b.bottom);});
+    node.addEventListener('blur',()=>tip.classList.remove('on'));
+  }
+  const strip=h=>h.replace(/<br>/g,'. ').replace(/<[^>]+>/g,'');
+
+  function legend(key,extra){
+    const box=document.querySelector(`[data-legend="${key}"]`); if(!box) return;
+    box.innerHTML=ORDER.map(k=>`<span><i class="sw" style="background:${M[k].c}"></i>${M[k].n}</span>`).join('')+(extra||'');
+  }
+  function axis(ticks,max,fmt,title){
+    const ax=el('div','ax'); ax.setAttribute('aria-hidden','true');
+    ax.appendChild(el('span'));
+    const tk=el('div','tk');
+    ticks.forEach((t,i)=>{const sp=el('span',i===0?'f':(i===ticks.length-1?'l':''),fmt(t)); sp.style.left=(t/max*100)+'%'; tk.appendChild(sp);});
+    ax.appendChild(tk); ax.appendChild(el('span','at',title||'')); return ax;
+  }
+  function grid(trk,ticks,max){ticks.forEach(t=>{const g=el('i','gl'); g.style.left=(t/max*100)+'%'; trk.appendChild(g);});}
+  function row(m,value,label){
+    const r=el('div','r');
+    r.appendChild(el('div','nm',`<i class="sw" style="background:${M[m].c}"></i>${M[m].n}`));
+    const trk=el('div','trk'); trk.tabIndex=0; trk.setAttribute('role','img'); r.appendChild(trk);
+    r.appendChild(el('div','v',value)); return [r,trk];
+  }
+  const pos=(x,max)=>(Math.min(x,max)/max*100)+'%';
+
+  // 1) tempo
+  (function(){
+    const box=document.querySelector('[data-plot="time"]'); if(!box) return;
+    legend('time','<span><i class="k-dot"></i>1º token (mediana)</span><span><i class="k-wk"></i>p25–p75</span>');
+    const max=18000, ticks=[0,6000,12000,18000];
+    ['C1t','C2t','C1j'].forEach(g=>{
+      box.appendChild(el('div','grp',G[g]));
+      ORDER.forEach(m=>{
+        const d=R.find(x=>x.g===g&&x.m===m);
+        const [r,trk]=row(m,s1(d.tot));
+        grid(trk,ticks,max);
+        const b=el('i','bx'); b.style.width=pos(d.tot,max); b.style.background=M[m].c; trk.appendChild(b);
+        const w=el('i','wk'); w.style.left=pos(d.p25,max); w.style.width=`calc(${pos(d.p75,max)} - ${pos(d.p25,max)})`; trk.appendChild(w);
+        const k=el('i','mk ink'); k.style.left=pos(d.ttft,max); trk.appendChild(k);
+        const h=`<b>${M[m].n}</b><span>${GS[g]} · ${d.ok} respostas</span><br>Total (mediana): ${s(d.tot)}<br>p25–p75: ${s(d.p25)} a ${s(d.p75)}<br>1º token (mediana): ${s(d.ttft)}`+(d.err?`<br><span>${d.err}</span>`:'');
+        trk.setAttribute('aria-label',strip(h)); bindTip(trk,h);
+        box.appendChild(r);
+      });
+    });
+    box.appendChild(axis(ticks,max,t=>String(t/1000),'s'));
+  })();
+
+  // 2) conformidade sem reparo, com IC95 de Wilson
+  (function(){
+    const box=document.querySelector('[data-plot="conf"]'); if(!box) return;
+    legend('conf','<span><i class="k-ci"></i>IC95</span><span><i class="k-ring"></i>aceita pelo pipeline</span>');
+    const max=1, ticks=[0,.25,.5,.75,1];
+    ['C1t','C2t','C1j'].forEach(g=>{
+      box.appendChild(el('div','grp',G[g]));
+      ORDER.forEach(m=>{
+        const d=R.find(x=>x.g===g&&x.m===m);
+        const [r,trk]=row(m,`${d.st}/${d.n}`);
+        grid(trk,ticks,max);
+        const c=el('i','ci'); c.style.left=pos(d.ci[0],max); c.style.width=`calc(${pos(d.ci[1],max)} - ${pos(d.ci[0],max)})`; c.style.background=M[m].c; trk.appendChild(c);
+        if(d.pl!==d.st){const o=el('i','mk ring'); o.style.left=pos(d.pl/d.n,max); o.style.borderColor=M[m].c; trk.appendChild(o);}
+        const k=el('i','mk'); k.style.left=pos(d.st/d.n,max); k.style.background=M[m].c; trk.appendChild(k);
+        const h=`<b>${M[m].n}</b><span>${GS[g]}</span><br>Sem reparo: ${d.st} de ${d.n} (${pct(d.st/d.n)})<br>IC95: ${pct(d.ci[0])} a ${pct(d.ci[1])}<br>Pipeline do app: ${d.pl} de ${d.n} · invariantes: ${d.inv} de ${d.n}`+(d.err?`<br><span>${d.err}</span>`:'')+(d.note?`<br><span>${d.note}</span>`:'');
+        trk.setAttribute('aria-label',strip(h)); bindTip(trk,h);
+        box.appendChild(r);
+      });
+    });
+    box.appendChild(axis(ticks,max,t=>String(Math.round(t*100)),'%'));
+  })();
+
+  // 3) custo por mil rubricas (modo pensante)
+  (function(){
+    const box=document.querySelector('[data-plot="cost"]'); if(!box) return;
+    legend('cost');
+    const max=5, ticks=[0,1,2,3,4,5];
+    ['C1t','C2t'].forEach(g=>{
+      box.appendChild(el('div','grp',G[g]));
+      ORDER.forEach(m=>{
+        const d=R.find(x=>x.g===g&&x.m===m), k=d.cost*1000;
+        const [r,trk]=row(m,(m==='gem'?'≥ ':'')+nf(k,2));
+        grid(trk,ticks,max);
+        const b=el('i','bx'); b.style.width=pos(k,max); b.style.background=M[m].c; trk.appendChild(b);
+        const h=`<b>${M[m].n}</b><span>${GS[g]}</span><br>Por mil rubricas: ${m==='gem'?'pelo menos ':''}US$ ${nf(k,2)}<br>Por rubrica: US$ ${nf(d.cost,5)}<br>~${nf(Math.round(d.tk),0)} tokens de saída (estimados)<br><span>${M[m].price}${M[m].free?' · no app: cota gratuita do servidor':''}</span>`;
+        trk.setAttribute('aria-label',strip(h)); bindTip(trk,h);
+        box.appendChild(r);
+      });
+    });
+    box.appendChild(axis(ticks,max,t=>String(t),'US$'));
+  })();
+
+  // tabela completa
+  (function(){
+    const tb=document.querySelector('#tbl-lado tbody'); if(!tb) return;
+    ['C1t','C2t','C1j'].forEach(g=>ORDER.forEach(m=>{
+      const d=R.find(x=>x.g===g&&x.m===m);
+      const tr=el('tr');
+      tr.innerHTML=`<td class="c">${({C1t:'C1 · pensante',C2t:'C2 · pensante',C1j:'C1 · JSON'})[g]}</td><td>${M[m].n}</td><td>${d.n}</td><td>${d.st}/${d.n} (${pct(d.ci[0])}–${pct(d.ci[1])})</td><td>${d.pl}/${d.n}</td><td>${d.inv}/${d.n}</td><td>${nf(d.ttft/1000,2)}</td><td>${nf(d.tot/1000,2)} [${nf(d.p25/1000,2)}–${nf(d.p75/1000,2)}]</td><td>${nf(Math.round(d.tk),0)}</td><td>${nf(d.cost,5)}${M[m].free?' *':''}</td>`;
+      tb.appendChild(tr);
+    }));
+  })();
 })();
 </script>
 </body>
