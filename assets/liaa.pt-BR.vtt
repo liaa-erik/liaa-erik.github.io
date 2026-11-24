@@ -17,113 +17,93 @@ Beleza, vamos usar IA!
 Ué, travou pra turma inteira? E devolveu tudo quebrado?!
 
 5
-00:00:15.866 --> 00:00:21.979
+00:00:15.866 --> 00:00:20.586
 Quem dá aula sabe: montar a rubrica é só o começo.
 
 6
-00:00:21.979 --> 00:00:28.093
-Depois vêm turmas, correção aluno por aluno e visão da sala inteira.
+00:00:20.586 --> 00:00:25.306
+Depois vêm turmas, correções e ver onde a sala travou.
 
 7
-00:00:28.093 --> 00:00:34.206
+00:00:25.306 --> 00:00:30.026
 Por isso, eu e Matheus Lemes Fialho criamos o RubricPro.
 
 8
-00:00:34.606 --> 00:00:38.829
-Organize disciplinas e turmas num só lugar,
+00:00:30.576 --> 00:00:35.486
+Organize turmas e prazos, edite rubricas analíticas ou ponderadas,
 
 9
-00:00:38.829 --> 00:00:43.053
-crie e personalize rubricas no editor, avalie aluno por aluno
+00:00:35.486 --> 00:00:40.396
+avalie cada aluno direto na grade e acompanhe as estatísticas da turma.
 
 10
-00:00:43.053 --> 00:00:47.276
-e acompanhe o resumo inteligente de desempenho da turma.
+00:00:40.946 --> 00:00:45.249
+Na LIAA (Unipampa), com André Medeiros e Pedro Guilherme,
 
 11
-00:00:47.676 --> 00:00:53.933
-Para essa plataforma nunca travar numa sala cheia,
+00:00:45.249 --> 00:00:49.553
+blindamos o motor de IA contra 3 armadilhas:
 
 12
-00:00:53.933 --> 00:01:00.189
-na LIAA (Unipampa) — com André Medeiros e Pedro Guilherme —
+00:00:49.553 --> 00:00:53.856
+cota travando a turma, 1 só fornecedor e JSON quebrado.
 
 13
-00:01:00.189 --> 00:01:06.446
-blindamos o motor de IA contra cota, lock-in e JSON quebrado.
+00:00:54.406 --> 00:01:01.976
+Groq e Gemini usam a cota grátis; OpenAI, Anthropic e OpenRouter usam chave BYOK no navegador.
 
 14
-00:01:06.846 --> 00:01:11.189
-O professor descreve a atividade e escolhe o modelo na hora.
+00:01:01.976 --> 00:01:09.546
+Em ~3 segundos, a rubrica nasce célula por célula com justificativa pedagógica.
 
 15
-00:01:11.189 --> 00:01:15.533
-Groq e Gemini usam a cota grátis do servidor;
+00:01:10.096 --> 00:01:16.489
+5 provedores, 1 contrato (IApiStrategy), orçamento de tokens e Zod.
 
 16
-00:01:15.533 --> 00:01:19.876
-OpenAI, Anthropic e OpenRouter usam a chave pessoal no navegador.
+00:01:16.489 --> 00:01:22.883
+Fallback só no grátis · com chave paga, 0 trocas surpresa.
 
 17
-00:01:20.276 --> 00:01:25.281
-Em ~3 segundos, a rubrica nasce célula por célula com justificativa pedagógica,
+00:01:22.883 --> 00:01:29.276
+Extensível: 7 linhas por modelo novo · 150–250 por provedor novo.
 
 18
-00:01:25.281 --> 00:01:30.286
-pronta para editar, aplicar nas turmas e avaliar os alunos.
+00:01:29.826 --> 00:01:38.489
+RubricBench: 60 execuções, 3 modelos — 43/43 válidas no modo pensante sem reparo.
 
 19
-00:01:30.686 --> 00:01:38.846
-5 provedores, 1 só contrato (IApiStrategy), orçamento de tokens e Zod.
+00:01:38.489 --> 00:01:47.153
+Mediana (TCC): Groq 2,5 s · Claude Haiku 5.5 9,0 s · Gemini 2.5 Flash 14,5 s.
 
 20
-00:01:38.846 --> 00:01:47.006
-Fallback só no grátis; com chave paga, 0 trocas automáticas.
+00:01:47.153 --> 00:01:55.816
+Custo estimado: US$ 0,73 por 1.000 rubricas no Claude Haiku 5.5.
 
 21
-00:01:47.406 --> 00:01:52.301
-Evoluir a plataforma é leve: 7 linhas para um modelo novo,
+00:01:56.366 --> 00:02:03.759
+Achado mais útil: em JSON direto (1.663 tokens), o Gemini cortou 0/5.
 
 22
-00:01:52.301 --> 00:01:57.196
-ou 150 a 250 linhas para um provedor inteiro.
+00:02:03.759 --> 00:02:11.153
+No modo pensante (4.413 tokens), subiu para 10/10.
 
 23
-00:01:57.596 --> 00:02:04.686
-RubricBench: 60 execuções, mesma rubrica, 3 modelos.
+00:02:11.153 --> 00:02:18.546
+Bug real encontrado: o app aceitou 1 de 4 critérios — correção antes do TCC.
 
 24
-00:02:04.686 --> 00:02:11.776
-No modo pensante: 43 de 43 respostas válidas, sem nenhum reparo.
-
-25
-00:02:12.176 --> 00:02:20.491
-Mediana (TCC): GPT-OSS 120B (Groq) 2,5 s · Claude Haiku 5.5 9,0 s · Gemini 2.5 Flash 14,5 s.
-
-26
-00:02:20.491 --> 00:02:28.806
-No Claude, mil rubricas custam cerca de US$ 0,73.
-
-27
-00:02:29.206 --> 00:02:41.136
-Em JSON direto (1.663 tokens), o Gemini cortou 0/5; no pensante (4.413), fez 10/10.
-
-28
-00:02:41.136 --> 00:02:53.066
-E o teste pegou um bug real no app aceitando 1 critério de 4 — correção antes do TCC.
-
-29
-00:02:53.766 --> 00:02:55.966
+00:02:19.396 --> 00:02:21.596
 Três segundos! Aí sim...
 
-30
-00:02:55.966 --> 00:02:59.866
+25
+00:02:21.596 --> 00:02:25.496
 ...agora sobra tempo pra ensinar de verdade.
 
-31
-00:03:01.399 --> 00:03:09.909
+26
+00:02:27.029 --> 00:02:34.949
 Amostra pequena (1 rodada) e esquema certo ≠ qualidade pedagógica (ainda não avaliada).
 
-32
-00:03:09.909 --> 00:03:18.419
-Plataforma completa: rubricpro.com.br · Experimentos e entregas: liaa-erik.github.io.
+27
+00:02:34.949 --> 00:02:42.869
+Plataforma: rubricpro.com.br · Experimentos e entregas: liaa-erik.github.io.
