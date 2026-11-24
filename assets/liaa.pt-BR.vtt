@@ -1,141 +1,129 @@
 WEBVTT
 
 1
-00:00:00.500 --> 00:00:06.725
-Uma rubrica de TCC, com quatro critérios e quatro níveis, pronta em cerca de três segundos.
+00:00:00.300 --> 00:00:03.000
+Quase três da manhã...
 
 2
-00:00:06.755 --> 00:00:10.876
-Gerada agora, no RubricPro, pelo modelo que o professor escolheu.
+00:00:03.000 --> 00:00:06.800
+...e eu ainda tô montando essa rubrica de TCC na mão!
 
 3
-00:00:11.976 --> 00:00:16.700
-Eu sou o Erik Fontella, e este é o módulo de inteligência artificial do meu TCC,
+00:00:08.133 --> 00:00:10.433
+Beleza, vamos usar IA!
 
 4
-00:00:16.730 --> 00:00:22.538
-feito no Laboratório de IA Aplicada da Unipampa, com André Medeiros e Pedro Guilherme.
+00:00:11.433 --> 00:00:15.433
+Ué, travou pra turma inteira? E devolveu tudo quebrado?!
 
 5
-00:00:23.638 --> 00:00:25.625
-Fazer uma rubrica à mão leva horas.
+00:00:15.866 --> 00:00:21.979
+Quem dá aula sabe: montar a rubrica é só o começo.
 
 6
-00:00:25.655 --> 00:00:28.910
-E gerar com IA tem três armadilhas:
+00:00:21.979 --> 00:00:28.093
+Depois vêm turmas, correção aluno por aluno e visão da sala inteira.
 
 7
-00:00:28.940 --> 00:00:31.860
-a cota gratuita acaba para a turma inteira ao mesmo tempo,
+00:00:28.093 --> 00:00:34.206
+Por isso, eu e Matheus Lemes Fialho criamos o RubricPro.
 
 8
-00:00:31.890 --> 00:00:34.278
-o aplicativo fica preso a um só fornecedor,
+00:00:34.606 --> 00:00:38.829
+Organize disciplinas e turmas num só lugar,
 
 9
-00:00:34.308 --> 00:00:36.585
-e o modelo devolve um JSON quebrado.
+00:00:38.829 --> 00:00:43.053
+crie e personalize rubricas no editor, avalie aluno por aluno
 
 10
-00:00:37.685 --> 00:00:43.909
-No aplicativo, o professor descreve a atividade: curso, disciplina, nível e foco.
+00:00:43.053 --> 00:00:47.276
+e acompanhe o resumo inteligente de desempenho da turma.
 
 11
-00:00:43.939 --> 00:00:47.573
-Escolhe a estrutura, aqui 4 × 4, e o modelo.
+00:00:47.676 --> 00:00:53.933
+Para essa plataforma nunca travar numa sala cheia,
 
 12
-00:00:47.603 --> 00:00:50.093
-Groq e Gemini usam a cota do sistema.
+00:00:53.933 --> 00:01:00.189
+na LIAA (Unipampa) — com André Medeiros e Pedro Guilherme —
 
 13
-00:00:50.123 --> 00:00:56.233
-OpenAI, Anthropic e OpenRouter só funcionam com a chave do próprio professor, que fica no navegador.
+00:01:00.189 --> 00:01:06.446
+blindamos o motor de IA contra cota, lock-in e JSON quebrado.
 
 14
-00:00:56.263 --> 00:00:59.272
-Ao gerar, a rubrica aparece célula por célula,
+00:01:06.846 --> 00:01:11.189
+O professor descreve a atividade e escolhe o modelo na hora.
 
 15
-00:00:59.302 --> 00:01:02.168
-e chega com a justificativa pedagógica de cada escolha.
+00:01:11.189 --> 00:01:15.533
+Groq e Gemini usam a cota grátis do servidor;
 
 16
-00:01:03.268 --> 00:01:05.308
-Por trás da tela, há um gateway.
+00:01:15.533 --> 00:01:19.876
+OpenAI, Anthropic e OpenRouter usam a chave pessoal no navegador.
 
 17
-00:01:05.338 --> 00:01:07.755
-Cada provedor implementa o mesmo contrato.
+00:01:20.276 --> 00:01:25.281
+Em ~3 segundos, a rubrica nasce célula por célula com justificativa pedagógica,
 
 18
-00:01:07.785 --> 00:01:14.573
-O gateway calcula quantos tokens a rubrica precisa, chama a estratégia escolhida e só entrega o que passou na validação.
+00:01:25.281 --> 00:01:30.286
+pronta para editar, aplicar nas turmas e avaliar os alunos.
 
 19
-00:01:14.603 --> 00:01:19.411
-Se a cota grátis acaba, ele tenta outro modelo grátis e avisa qual respondeu.
+00:01:30.686 --> 00:01:38.846
+5 provedores, 1 só contrato (IApiStrategy), orçamento de tokens e Zod.
 
 20
-00:01:19.441 --> 00:01:24.268
-Com chave paga, nunca troca sozinho, para não gerar um custo surpresa.
+00:01:38.846 --> 00:01:47.006
+Fallback só no grátis; com chave paga, 0 trocas automáticas.
 
 21
-00:01:25.368 --> 00:01:27.628
-E quanto custa colocar um modelo novo?
+00:01:47.406 --> 00:01:52.301
+Evoluir a plataforma é leve: 7 linhas para um modelo novo,
 
 22
-00:01:27.658 --> 00:01:30.693
-Se o provedor já existe, 7 linhas no catálogo.
+00:01:52.301 --> 00:01:57.196
+ou 150 a 250 linhas para um provedor inteiro.
 
 23
-00:01:30.723 --> 00:01:35.064
-Um provedor novo, de 150 a 250 linhas.
+00:01:57.596 --> 00:02:04.686
+RubricBench: 60 execuções, mesma rubrica, 3 modelos.
 
 24
-00:01:36.164 --> 00:01:42.791
-Para medir, criamos o RubricBench: 60 execuções, a mesma rubrica, três modelos.
+00:02:04.686 --> 00:02:11.776
+No modo pensante: 43 de 43 respostas válidas, sem nenhum reparo.
 
 25
-00:01:42.821 --> 00:01:49.112
-No modo pensante, 43 de 43 rubricas vieram válidas, sem nenhum reparo.
+00:02:12.176 --> 00:02:20.491
+Mediana (TCC): GPT-OSS 120B (Groq) 2,5 s · Claude Haiku 5.5 9,0 s · Gemini 2.5 Flash 14,5 s.
 
 26
-00:01:49.142 --> 00:01:54.182
-O GPT-OSS 120B, no Groq, levou 2,5 segundos.
+00:02:20.491 --> 00:02:28.806
+No Claude, mil rubricas custam cerca de US$ 0,73.
 
 27
-00:01:54.212 --> 00:01:59.699
-O Claude Haiku, 9. O Gemini 2.5 Flash, 14,5.
+00:02:29.206 --> 00:02:41.136
+Em JSON direto (1.663 tokens), o Gemini cortou 0/5; no pensante (4.413), fez 10/10.
 
 28
-00:01:59.729 --> 00:02:04.759
-Com o Claude, mil rubricas custam cerca de 73 centavos de dólar.
+00:02:41.136 --> 00:02:53.066
+E o teste pegou um bug real no app aceitando 1 critério de 4 — correção antes do TCC.
 
 29
-00:02:05.859 --> 00:02:07.874
-O achado mais útil foi uma falha.
+00:02:53.766 --> 00:02:55.966
+Três segundos! Aí sim...
 
 30
-00:02:07.904 --> 00:02:16.194
-Pedindo JSON direto, o Gemini gastou quase todo o orçamento de tokens pensando e cortou a resposta: 0 de 5.
+00:02:55.966 --> 00:02:59.866
+...agora sobra tempo pra ensinar de verdade.
 
 31
-00:02:16.224 --> 00:02:20.648
-No modo pensante, com mais tokens reservados: 10 de 10.
+00:03:01.399 --> 00:03:09.909
+Amostra pequena (1 rodada) e esquema certo ≠ qualidade pedagógica (ainda não avaliada).
 
 32
-00:02:20.678 --> 00:02:26.241
-E o aplicativo aceitou uma rubrica cortada. Isso fica como correção antes do TCC.
-
-33
-00:02:27.341 --> 00:02:30.509
-Ainda é uma rodada só, com poucas execuções,
-
-34
-00:02:30.539 --> 00:02:36.900
-e esquema certo não é rubrica boa: a qualidade pedagógica vai para uma avaliação cega com professores.
-
-35
-00:02:36.930 --> 00:02:40.918
-Os números, o código e as entregas estão no site do projeto.
+00:03:09.909 --> 00:03:18.419
+Plataforma completa: rubricpro.com.br · Experimentos e entregas: liaa-erik.github.io.
