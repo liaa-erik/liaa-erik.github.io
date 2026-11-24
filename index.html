@@ -295,6 +295,100 @@ footer a{color:#B8C0CC}
 }
 @media (max-width:560px){.kpi{grid-template-columns:1fr}}
 .tbl.lt th{white-space:normal;vertical-align:bottom;line-height:1.3}
+
+/* plataforma showcase */
+.plat-tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:34px}
+.plat-tab{appearance:none;text-align:left;background:var(--surface);border:1.5px solid var(--line);border-radius:16px;padding:16px 18px;cursor:pointer;font:inherit;color:var(--ink);transition:border-color .18s,box-shadow .18s,transform .18s}
+.plat-tab:hover{border-color:#BBD6F5;transform:translateY(-1px)}
+.plat-tab[aria-selected="true"]{border-color:var(--blue);background:#F2F8FF;box-shadow:0 6px 20px rgba(30,136,229,.12)}
+.plat-tab .pt-n{display:block;font:700 11.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--blue-d);margin-bottom:4px}
+.plat-tab b{display:block;font-size:16px;line-height:1.25}
+.plat-tab span{display:block;font-size:13px;color:var(--muted);margin-top:4px;line-height:1.35}
+.browser{margin-top:18px;background:#0F141C;border:1px solid #263142;border-radius:20px;overflow:hidden;box-shadow:0 22px 54px rgba(15,23,42,.14)}
+.b-bar{display:flex;align-items:center;gap:12px;padding:12px 16px;background:#151B26;border-bottom:1px solid #232D3D}
+.b-dots{display:flex;gap:6px}.b-dots i{width:10px;height:10px;border-radius:50%;display:block}
+.b-dots i:nth-child(1){background:#EF6339}.b-dots i:nth-child(2){background:#F4B625}.b-dots i:nth-child(3){background:#24CCB5}
+.b-url{flex:1;background:#0D1118;border:1px solid #232D3D;border-radius:8px;padding:5px 12px;font:500 12.5px var(--mono);color:#9AB0C9;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.b-zoom{appearance:none;background:#1E2A3B;border:1px solid #30425B;color:#E2EEFA;border-radius:8px;padding:6px 11px;font:600 12.5px var(--mono);cursor:pointer}
+.b-zoom:hover{background:var(--blue);border-color:var(--blue);color:#fff}
+.b-stage{position:relative;aspect-ratio:1024/581;background:#0D1118;cursor:zoom-in;overflow:hidden}
+.b-stage img{width:100%;height:100%;object-fit:cover;transition:opacity .2s ease}
+.b-foot{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 18px;background:#131924;border-top:1px solid #232D3D;color:#C8D4E3;font-size:14.5px;flex-wrap:wrap}
+.b-foot b{color:#fff}
+.b-foot a{color:var(--blue-l);font:600 13px var(--mono);text-decoration:none}
+
+/* simulador interativo do gateway */
+.sim-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-bottom:18px;margin-bottom:18px;border-bottom:1px solid var(--line)}
+.sim-lbl{font:700 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--soft)}
+.sim-btns{display:flex;gap:8px;flex-wrap:wrap}
+.sim-btn{appearance:none;background:var(--page);border:1.5px solid var(--line);color:var(--ink);border-radius:999px;padding:7px 14px;font:700 13px 'Plus Jakarta Sans',system-ui,sans-serif;cursor:pointer;transition:all .16s}
+.sim-btn:hover{border-color:var(--blue)}
+.sim-btn.on{background:var(--night);border-color:var(--night);color:#fff}
+.sim-btn.on[data-sim="fallback"]{background:#007C8C;border-color:#007C8C}
+.sim-btn.on[data-sim="byok"]{background:#B45309;border-color:#B45309}
+.sim-log{margin-top:16px;background:var(--night);color:#D6E2F0;border-radius:12px;padding:12px 16px;font:500 13px/1.55 var(--mono);display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.sim-log .tag{font-weight:700;padding:3px 9px;border-radius:6px;font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
+.sim-log .tag.ok{background:#124432;color:#7FDCA2}
+.sim-log .tag.fb{background:#124252;color:#67E8F9}
+.sim-log .tag.lk{background:#523410;color:#FFD27A}
+.pipe svg .hl-ok{fill:#DFF7EE;stroke:#1BAF7A;stroke-width:2.5}
+.pipe svg .hl-err{fill:#FDE8E2;stroke:#EF6339;stroke-width:2.5}
+.pipe svg .hl-fb{fill:#DDF6FA;stroke:#00BCD4;stroke-width:2.5}
+.pipe svg .hl-lock{fill:#FEF3DC;stroke:#E8A33D;stroke-width:2.5}
+.pipe svg .dim{opacity:.38;transition:opacity .25s}
+
+/* previews reais da UI de IA */
+.ui-shots{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}
+.ui-shot{background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;cursor:zoom-in;transition:transform .18s,box-shadow .18s}
+.ui-shot:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(15,23,42,.08)}
+.ui-shot .imgw{aspect-ratio:1024/581;background:#0D1118;overflow:hidden}
+.ui-shot img{width:100%;height:100%;object-fit:cover}
+.ui-shot .cap{padding:14px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.ui-shot .cap b{display:block;font-size:15px}
+.ui-shot .cap span{display:block;font-size:13px;color:var(--muted)}
+.ui-shot .cap i{font:700 12px var(--mono);font-style:normal;color:var(--blue-d);white-space:nowrap}
+
+/* meta rubrica interativa (DNA RubricPro) */
+.meta-sec{background:var(--night);color:#F1F5F9;border:0}
+.meta-sec .eyebrow{color:var(--blue-l)}
+.meta-sec h2{color:#F8FAFC}
+.meta-sec .lede{color:#B8C0CC}
+.mrub{margin-top:36px;background:var(--night2);border:1px solid var(--nightline);border-radius:22px;padding:24px}
+.mrub-top{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-bottom:18px;border-bottom:1px solid var(--nightline)}
+.mrub-score{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.mrub-pill{background:#12253A;border:1px solid #23476D;border-radius:12px;padding:8px 14px;font:700 14px var(--mono);color:#E2F0FF}
+.mrub-pill b{font-size:20px;color:#24CCB5}
+.mrub-msg{font-size:14.5px;color:#B8C0CC}
+.mrub-reset{appearance:none;background:transparent;border:1px solid #3A3F4B;color:#B8C0CC;border-radius:10px;padding:7px 12px;font:600 12.5px var(--mono);cursor:pointer}
+.mrub-reset:hover{border-color:#fff;color:#fff}
+.mrub-grid{margin-top:18px;display:grid;gap:12px}
+.mrub-row{display:grid;grid-template-columns:210px repeat(4,1fr);gap:10px;align-items:stretch}
+.mrub-crit{background:#14161D;border:1px solid var(--nightline);border-radius:14px;padding:14px;display:flex;flex-direction:column;justify-content:center}
+.mrub-crit b{font-size:15px;color:#F8FAFC}
+.mrub-crit span{font:600 11.5px var(--mono);color:#8A93A3;margin-top:4px}
+.mrub-cell{appearance:none;text-align:left;background:#161820;border:1.5px solid #2A2E39;border-radius:14px;padding:12px 13px;color:#B8C0CC;font:400 13px/1.4 'Plus Jakarta Sans',system-ui,sans-serif;cursor:pointer;transition:all .15s;position:relative}
+.mrub-cell:hover{border-color:#53627A;color:#F1F5F9}
+.mrub-cell .lv{display:block;font:700 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px;color:#8A93A3}
+.mrub-cell.on{color:#F8FAFC;background:#142834;border-color:var(--lv-c,#24CCB5);box-shadow:0 0 0 1px var(--lv-c,#24CCB5) inset}
+.mrub-cell.on .lv{color:var(--lv-c,#24CCB5)}
+.mrub-bar{height:8px;border-radius:999px;background:#262933;margin-top:18px;overflow:hidden}
+.mrub-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#EF6339,#F4B625,#39A3EF,#24CCB5);transition:width .35s ease}
+
+/* lightbox */
+#lb{position:fixed;inset:0;z-index:100;background:rgba(9,12,18,.92);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:24px}
+#lb.on{display:flex}
+#lb figure{margin:0;max-width:1280px;width:100%;display:flex;flex-direction:column;gap:12px}
+#lb img{width:100%;max-height:82vh;object-fit:contain;border-radius:14px;border:1px solid #2C394E;background:#0D1118}
+#lb figcaption{display:flex;justify-content:space-between;align-items:center;color:#D6E2F0;font-size:14.5px;gap:16px}
+#lb button{appearance:none;background:#1E2A3B;border:1px solid #354A67;color:#fff;border-radius:10px;padding:7px 14px;font:700 13px var(--mono);cursor:pointer}
+
+@media (max-width:900px){
+  .plat-tabs,.ui-shots{grid-template-columns:1fr 1fr}
+  .mrub-row{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  .plat-tabs,.ui-shots{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
@@ -302,13 +396,14 @@ footer a{color:#B8C0CC}
 <nav>
   <div class="wrap">
     <a class="brand" href="#topo"><img src="assets/rp.png" alt="">RubricPro <span style="color:#8A93A3;font-weight:600">· LIAA</span></a>
+    <a class="l" href="#plataforma">Plataforma</a>
     <a class="l" href="#problema">Problema</a>
-    <a class="l" href="#como">Como funciona</a>
-    <a class="l" href="#custo">Custo de um modelo</a>
+    <a class="l" href="#como">Gateway</a>
+    <a class="l" href="#custo">Custo</a>
     <a class="l" href="#lado">Lado a lado</a>
-    <a class="l" href="#linha">Linha do tempo</a>
     <a class="l" href="#limites">Limites</a>
     <a class="l" href="#entregas">Entregas</a>
+    <a class="l" href="#avaliar">Avaliar</a>
     <a class="cta" href="https://www.rubricpro.com.br/" target="_blank" rel="noopener">Abrir o app</a>
   </div>
 </nav>
@@ -317,18 +412,18 @@ footer a{color:#B8C0CC}
 <header class="hero" id="topo">
   <div class="rgrid" aria-hidden="true"><i style="background:#EF6339;animation-delay:0.25s"></i><i style="background:#F4B625;animation-delay:0.32s"></i><i style="background:#39A3EF;animation-delay:0.39s"></i><i style="background:#949CA8;animation-delay:0.46s"></i><i style="background:#39A3EF;animation-delay:0.53s"></i><i style="background:#EF6339;animation-delay:0.60s"></i><i style="background:#F4B625;animation-delay:0.67s"></i><i style="background:#F4B625;animation-delay:0.74s"></i><i style="background:#39A3EF;animation-delay:0.81s"></i><i style="background:#39A3EF;animation-delay:0.88s"></i><i style="background:#EF6339;animation-delay:0.95s"></i><i style="background:#949CA8;animation-delay:1.02s"></i><i style="background:#39A3EF;animation-delay:1.09s"></i><i style="background:#949CA8;animation-delay:1.16s"></i><i style="background:#24CCB5;animation-delay:1.23s"></i><i style="background:#EF6339;animation-delay:1.30s"></i><i style="background:#949CA8;animation-delay:1.37s"></i><i style="background:#F4B625;animation-delay:1.44s"></i><i style="background:#949CA8;animation-delay:1.51s"></i><i style="background:#24CCB5;animation-delay:1.58s"></i><i style="background:#EF6339;animation-delay:1.65s"></i><i style="background:#949CA8;animation-delay:1.72s"></i><i style="background:#F4B625;animation-delay:1.79s"></i><i style="background:#39A3EF;animation-delay:1.86s"></i><i style="background:#39A3EF;animation-delay:1.93s"></i><i style="background:#EF6339;animation-delay:2.00s"></i><i style="background:#F4B625;animation-delay:2.07s"></i><i style="background:#39A3EF;animation-delay:2.14s"></i><i style="background:#39A3EF;animation-delay:2.21s"></i><i style="background:#39A3EF;animation-delay:2.28s"></i></div>
   <div class="wrap">
-    <p class="eyebrow">LIAA 2026.2 · Unipampa · módulo de IA do TCC</p>
+    <p class="eyebrow">LIAA 2026.2 · Unipampa · plataforma RubricPro &amp; módulo de IA do TCC</p>
     <h1>Troque o modelo, <span>não o código.</span></h1>
-    <p class="lede">O RubricPro gera rubricas de avaliação com IA por um gateway único: cinco provedores atrás de um só contrato, saída validada e um fallback que nunca gasta o dinheiro do professor sem avisar.</p>
+    <p class="lede">O RubricPro cobre o ciclo avaliativo inteiro do professor — rubricas, turmas, correção aluno por aluno e estatísticas da sala. Na LIAA, blindamos o motor de IA da plataforma por um gateway único: cinco provedores sob um contrato, saída validada e fallback que nunca gasta a chave paga sem avisar.</p>
     <div class="scale" aria-hidden="true"><span style="background:#EF6339">insuficiente</span><span style="background:#F4B625">em progresso</span><span style="background:#949CA8">adequado</span><span style="background:#39A3EF">bom</span><span style="background:#24CCB5">excelente</span></div>
     <div class="hero-grid">
       <div>
         <div class="video" id="video">
-          <video controls playsinline preload="metadata" poster="assets/liaa-poster.jpg?v=20261124"><source src="assets/liaa.mp4?v=20261124" type="video/mp4"><track kind="captions" src="assets/liaa.pt-BR.vtt?v=20261124" srclang="pt-BR" label="Português"></video>
+          <video controls playsinline preload="metadata" poster="assets/liaa-poster.jpg?v=20261124b"><source src="assets/liaa.mp4?v=20261124" type="video/mp4"><track kind="captions" src="assets/liaa.pt-BR.vtt?v=20261124" srclang="pt-BR" label="Português"></video>
         </div>
         <div class="btns">
           <a class="btn p" href="https://www.rubricpro.com.br/" target="_blank" rel="noopener">Abrir o RubricPro ↗</a>
-          <a class="btn g" href="#como">Ver como funciona</a>
+          <a class="btn g" href="#plataforma">Explorar a plataforma</a>
         </div>
       </div>
       <div class="stats">
@@ -340,6 +435,37 @@ footer a{color:#B8C0CC}
     </div>
   </div>
 </header>
+
+<!-- A PLATAFORMA COMPLETA -->
+<section id="plataforma">
+  <div class="wrap">
+    <p class="eyebrow"><span class="pips" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>Contexto · Muito além de gerar rubricas</p>
+    <h2>Uma plataforma completa para todo o ciclo avaliativo.</h2>
+    <p class="lede">Criado por Erik Fontella e Matheus Lemes Fialho e já em produção em <a href="https://www.rubricpro.com.br/" target="_blank" rel="noopener">rubricpro.com.br</a>, o RubricPro acompanha o professor das turmas até o raio-X das notas. O módulo de IA da LIAA vive dentro desse ecossistema real.</p>
+
+    <div class="plat-tabs" role="tablist" aria-label="Telas reais do RubricPro">
+      <button class="plat-tab" type="button" role="tab" aria-selected="true" data-shot="0"><span class="pt-n">01 · Turmas</span><b>Cursos e avaliações</b><span>Prazos, progresso da sala, CSV e envio de feedbacks.</span></button>
+      <button class="plat-tab" type="button" role="tab" aria-selected="false" data-shot="1"><span class="pt-n">02 · Editor</span><b>Rubrica completa</b><span>Analítica ou ponderada, salvamento automático e revisão.</span></button>
+      <button class="plat-tab" type="button" role="tab" aria-selected="false" data-shot="2"><span class="pt-n">03 · Correção</span><b>Aluno por aluno</b><span>Avalie direto pela matriz com nota e retorno claros.</span></button>
+      <button class="plat-tab" type="button" role="tab" aria-selected="false" data-shot="3"><span class="pt-n">04 · Raio-X</span><b>Estatísticas da turma</b><span>Distribuição das notas e gargalos por critério.</span></button>
+    </div>
+
+    <div class="browser fade-in">
+      <div class="b-bar">
+        <div class="b-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="b-url" id="plat-url">https://www.rubricpro.com.br/cursos/algoritmos-demo/avaliacoes</div>
+        <button class="b-zoom" type="button" id="plat-zoom">⤢ Ampliar</button>
+      </div>
+      <div class="b-stage" id="plat-stage" title="Clique para ampliar em tela cheia">
+        <img id="plat-img" src="assets/app/01_turmas.webp" alt="Tela de Cursos e Avaliações no RubricPro mostrando 56 alunos e progresso das correções">
+      </div>
+      <div class="b-foot">
+        <span id="plat-cap"><b>Turmas &amp; Avaliações:</b> todas as entregas da disciplina, barra de progresso por turma, exportação CSV e disparo de feedbacks.</span>
+        <a href="https://www.rubricpro.com.br/" target="_blank" rel="noopener">Testar ao vivo ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- PROBLEMA -->
 <section id="problema">
@@ -363,7 +489,15 @@ footer a{color:#B8C0CC}
     <p class="lede">O professor descreve a atividade. O gateway calcula quantos tokens a rubrica precisa, escolhe a estratégia do provedor e só entrega o que passou pelo esquema.</p>
 
     <div class="pipe">
-      <svg viewBox="0 0 1060 360" role="img" aria-label="Fluxo: pedido do professor, orçamento de tokens, gateway com registro de estratégias, cinco provedores, validação com Zod e rubrica entregue em streaming. Fallback só no modo gratuito.">
+      <div class="sim-bar">
+        <span class="sim-lbl">Simulador ao vivo · teste o gateway</span>
+        <div class="sim-btns" role="group" aria-label="Cenários do gateway">
+          <button class="sim-btn on" type="button" data-sim="normal">● Chamada normal (Groq)</button>
+          <button class="sim-btn" type="button" data-sim="fallback">⚡ Simular 429 (cota grátis)</button>
+          <button class="sim-btn" type="button" data-sim="byok">🔒 Erro na chave paga (BYOK)</button>
+        </div>
+      </div>
+      <svg id="gw-svg" viewBox="0 0 1060 360" role="img" aria-label="Fluxo interativo: pedido do professor, orçamento de tokens, gateway com registro de estratégias, cinco provedores, validação com Zod e rubrica entregue em streaming. Fallback só no modo gratuito.">
         <defs>
           <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#9DB8D9"/></marker>
         </defs>
@@ -383,7 +517,7 @@ footer a{color:#B8C0CC}
           <path d="M778 300 C820 300 820 180 856 180"/>
         </g>
         <!-- fallback (gratuito) -->
-        <path d="M703 82 C735 92 735 108 703 118" stroke="#00BCD4" stroke-width="2.5" fill="none" stroke-dasharray="5 5" marker-end="url(#ah)"/>
+        <path id="gw-fb-arc" d="M703 82 C735 92 735 108 703 118" stroke="#00BCD4" stroke-width="2.5" fill="none" stroke-dasharray="5 5" marker-end="url(#ah)"/>
         <!-- caixas -->
         <g font-size="15" font-weight="700" fill="#0F172A" text-anchor="middle">
           <rect x="10" y="140" width="140" height="80" rx="14" fill="#F4F6FA" stroke="#E3E7EE"/>
@@ -398,28 +532,42 @@ footer a{color:#B8C0CC}
           <text x="473" y="212" fill="#8A93A3" font-size="12.5" font-weight="500">fallback controlado</text>
 
           <g font-size="14">
-            <rect x="630" y="40" width="148" height="40" rx="10" fill="#E8F1FC" stroke="#BBD6F5"/><text x="704" y="65">Groq</text>
-            <rect x="630" y="100" width="148" height="40" rx="10" fill="#E8F1FC" stroke="#BBD6F5"/><text x="704" y="125">Gemini</text>
-            <rect x="630" y="160" width="148" height="40" rx="10" fill="#FFFFFF" stroke="#E3E7EE"/><text x="704" y="185">OpenAI</text>
-            <rect x="630" y="220" width="148" height="40" rx="10" fill="#FFFFFF" stroke="#E3E7EE"/><text x="704" y="245">Anthropic</text>
-            <rect x="630" y="280" width="148" height="40" rx="10" fill="#FFFFFF" stroke="#E3E7EE"/><text x="704" y="305">OpenRouter</text>
+            <rect id="n-groq" x="630" y="40" width="148" height="40" rx="10" fill="#E8F1FC" stroke="#BBD6F5"/><text x="704" y="65">Groq</text>
+            <rect id="n-gem" x="630" y="100" width="148" height="40" rx="10" fill="#E8F1FC" stroke="#BBD6F5"/><text x="704" y="125">Gemini</text>
+            <rect id="n-oai" x="630" y="160" width="148" height="40" rx="10" fill="#FFFFFF" stroke="#E3E7EE"/><text x="704" y="185">OpenAI</text>
+            <rect id="n-ant" x="630" y="220" width="148" height="40" rx="10" fill="#FFFFFF" stroke="#E3E7EE"/><text x="704" y="245">Anthropic</text>
+            <rect id="n-or" x="630" y="280" width="148" height="40" rx="10" fill="#FFFFFF" stroke="#E3E7EE"/><text x="704" y="305">OpenRouter</text>
           </g>
 
-          <rect x="858" y="130" width="192" height="100" rx="16" fill="#1E88E5"/>
-          <text x="954" y="168" fill="#fff" font-size="16">Zod valida</text>
-          <text x="954" y="190" fill="#E3F0FC" font-size="12.5" font-weight="500">esquema, níveis e pesos</text>
-          <text x="954" y="210" fill="#E3F0FC" font-size="12.5" font-weight="500">→ rubrica em streaming</text>
+          <rect id="n-zod" x="858" y="130" width="192" height="100" rx="16" fill="#1E88E5"/>
+          <text id="t-zod1" x="954" y="168" fill="#fff" font-size="16">Zod valida</text>
+          <text id="t-zod2" x="954" y="190" fill="#E3F0FC" font-size="12.5" font-weight="500">esquema, níveis e pesos</text>
+          <text id="t-zod3" x="954" y="210" fill="#E3F0FC" font-size="12.5" font-weight="500">→ rubrica em streaming</text>
         </g>
         <!-- pacotes animados -->
-        <circle r="6" fill="#1E88E5" class="flow-dot" style="offset-path:path('M150 180 H628');animation-delay:0s"/>
-        <circle r="6" fill="#1E88E5" class="flow-dot" style="offset-path:path('M150 180 H552 C590 180 590 60 628 60');animation-delay:-2.6s"/>
-        <circle r="6" fill="#00BCD4" class="flow-dot" style="offset-path:path('M778 180 H856');animation-duration:1.6s"/>
+        <circle id="dot1" r="6" fill="#1E88E5" class="flow-dot" style="offset-path:path('M150 180 H552 C590 180 590 60 628 60');animation-delay:0s"/>
+        <circle id="dot2" r="6" fill="#00BCD4" class="flow-dot" style="offset-path:path('M778 60 C820 60 820 180 856 180');animation-duration:2.2s"/>
         <text x="742" y="22" font-size="12.5" fill="#007C8C" font-weight="700" text-anchor="middle">fallback só no grátis</text>
       </svg>
+      <div class="sim-log" id="sim-log" aria-live="polite">
+        <span class="tag ok">200 OK</span>
+        <span>Pedido 4×4 (4.413 tokens) → Groq (GPT-OSS 120B) → Zod validou esquema e invariantes → rubrica em ~2,5 s.</span>
+      </div>
       <div class="legend">
         <span><i style="background:#BBD6F5"></i>Cota do sistema (modo gratuito)</span>
         <span><i style="background:#E3E7EE"></i>Só com a chave pessoal do professor (BYOK)</span>
         <span><i style="background:#00BCD4"></i>Fallback: tenta outro provedor grátis e avisa qual modelo respondeu</span>
+      </div>
+    </div>
+
+    <div class="ui-shots fade-in">
+      <div class="ui-shot" data-lb="assets/app/05_assistente_ia.webp" data-lb-cap="Assistente de Criação de Rubrica com IA no RubricPro: atividade, estrutura e seletor único de provedor e modelo.">
+        <div class="imgw"><img src="assets/app/05_assistente_ia.webp" alt="Modal real do Assistente de Criação de Rubrica com IA no RubricPro" loading="lazy"></div>
+        <div class="cap"><div><b>Assistente de IA em produção</b><span>Seletor único de provedor e modelo direto na criação.</span></div><i>⤢ Ampliar</i></div>
+      </div>
+      <div class="ui-shot" data-lb="assets/app/06_minhas_chaves.webp" data-lb-cap="Modal Minhas Chaves de IA (BYOK): Groq e Gemini na cota gratuita; OpenAI, Anthropic e OpenRouter salvas somente no navegador.">
+        <div class="imgw"><img src="assets/app/06_minhas_chaves.webp" alt="Modal real Minhas Chaves de IA com os 5 provedores" loading="lazy"></div>
+        <div class="cap"><div><b>Minhas Chaves de IA (BYOK)</b><span>Salvas somente no navegador — nunca gravadas no banco.</span></div><i>⤢ Ampliar</i></div>
       </div>
     </div>
 
@@ -623,12 +771,40 @@ footer a{color:#B8C0CC}
       <div class="dv" style="--lv:#F4B625"><span class="dcode">A01–A03 · ago–set</span><h3>Ideação, investigação e plano experimental</h3><p>Da ideia do gateway ao plano de experimentos, entregues no Classroom.</p><div class="k"><span>anexos no Classroom</span></div></div>
       <div class="dv" style="--lv:#949CA8"><span class="dcode">A04 · 15/09</span><h3>Gateway multimodelo e BYOK</h3><p>Primeira apresentação: Strategy, fallback, BYOK, modo pensante e Zod.</p><div class="k"><a href="assets/entregas/a04-apresentacao-gateway.pdf" target="_blank" rel="noopener">PDF ↗</a></div></div>
       <div class="dv" style="--lv:#39A3EF"><span class="dcode">A11 · 03/11</span><h3>Escopo fechado e demonstração</h3><p>APIs online, modelos pelo catálogo, orçamento de tokens e fallback só no grátis.</p><div class="k"><a href="assets/entregas/a11-defesa-modulo-ia.pdf" target="_blank" rel="noopener">PDF ↗</a></div></div>
-      <div class="dv" style="--lv:#24CCB5"><span class="dcode">A13 e A15 · nov</span><h3>Este site, com vídeo</h3><p>Contexto, problema, solução, evolução e o vídeo de 3:18 no topo: abertura e fechamento em anime, a plataforma RubricPro completa, o módulo de IA, RubricBench e legendas.</p><div class="k"><a href="#topo">você está aqui</a></div></div>
-      <div class="dv" style="--lv:#24CCB5"><span class="dcode">A14 · nov</span><h3>Vídeo de retrospectiva</h3><p>Até 2 minutos, produzido com IA, sobre o que o projeto já fez.</p><div class="k"><span>em produção</span></div></div>
-      <div class="dv" style="--lv:#39A3EF"><span class="dcode">A17 · 24/11</span><h3>Dicas de IA e agentes</h3><p>Seis dicas tiradas do RubricPro, do GitExpert Check e da avaliação de artefatos.</p><div class="k"><!-- quando exportar os slides: <a href="assets/entregas/a17-dicas-ia.pdf" target="_blank" rel="noopener">PDF ↗</a> --><span>slides em aula</span></div></div>
+      <div class="dv" style="--lv:#24CCB5"><span class="dcode">A13 e A15 · nov</span><h3>Este site, com vídeo</h3><p>Contexto, plataforma completa, solução, experimentos e o vídeo de 3:18 no topo com abertura/fechamento em anime, telas reais e legendas.</p><div class="k"><a href="#topo">você está aqui</a></div></div>
+      <div class="dv" style="--lv:#24CCB5"><span class="dcode">A14 · nov</span><h3>Vídeo de retrospectiva</h3><p>Síntese em vídeo produzida com IA sobre a evolução do projeto ao longo do semestre.</p><div class="k"><a href="#video">ver vídeo no topo</a></div></div>
+      <div class="dv" style="--lv:#39A3EF"><span class="dcode">A17 · 24/11</span><h3>Dicas de IA e agentes</h3><p>Seis dicas práticas tiradas do RubricPro, do GitExpert Check e da avaliação de artefatos com LLMs.</p><div class="k"><span>apresentação em aula</span></div></div>
     </div>
   </div>
 </section>
+
+<!-- META RUBRICA INTERATIVA -->
+<section id="avaliar" class="meta-sec">
+  <div class="wrap">
+    <p class="eyebrow"><span class="pips" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>Experimento interativo · DNA do RubricPro</p>
+    <h2>Avalie esta entrega com uma rubrica de verdade.</h2>
+    <p class="lede">Em vez de só explicar como o RubricPro avalia alunos, experimente a mecânica aqui mesmo: clique em um nível por critério para pontuar o nosso trabalho na LIAA.</p>
+
+    <div class="mrub" id="mrub">
+      <div class="mrub-top">
+        <div class="mrub-score">
+          <div class="mrub-pill">PONTUAÇÃO <b id="mr-pts">0 / 16</b> · <span id="mr-pct">0%</span></div>
+          <span class="mrub-msg" id="mr-msg">Selecione um nível em cada um dos 4 critérios abaixo.</span>
+        </div>
+        <button class="mrub-reset" type="button" id="mr-reset">Limpar seleção</button>
+      </div>
+      <div class="mrub-grid" id="mr-grid"></div>
+      <div class="mrub-bar" aria-hidden="true"><i id="mr-bar"></i></div>
+    </div>
+  </div>
+</section>
+
+<div id="lb" role="dialog" aria-modal="true" aria-label="Visualização ampliada da tela">
+  <figure>
+    <img id="lb-img" src="" alt="">
+    <figcaption><span id="lb-cap"></span><button type="button" id="lb-close">Fechar (Esc)</button></figcaption>
+  </figure>
+</div>
 
 <footer>
   <div class="wrap">
@@ -803,6 +979,142 @@ footer a{color:#B8C0CC}
       tb.appendChild(tr);
     }));
   })();
+})();
+
+// galeria da plataforma + lightbox + simulador do gateway + meta rubrica
+(function(){
+  const $=id=>document.getElementById(id);
+
+  // 1) lightbox
+  const lb=$('lb'), lbImg=$('lb-img'), lbCap=$('lb-cap');
+  function openLB(src, cap){
+    lbImg.src=src; lbImg.alt=cap||''; lbCap.textContent=cap||'';
+    lb.classList.add('on'); document.body.style.overflow='hidden';
+  }
+  function closeLB(){ lb.classList.remove('on'); document.body.style.overflow=''; }
+  $('lb-close').addEventListener('click', closeLB);
+  lb.addEventListener('click', e=>{ if(e.target===lb) closeLB(); });
+  document.addEventListener('keydown', e=>{ if(e.key==='Escape'&&lb.classList.contains('on')) closeLB(); });
+  document.querySelectorAll('[data-lb]').forEach(node=>{
+    node.addEventListener('click', ()=>openLB(node.dataset.lb, node.dataset.lbCap));
+  });
+
+  // 2) plataforma tabs
+  const SHOTS=[
+    {src:'assets/app/01_turmas.webp',url:'https://www.rubricpro.com.br/cursos/algoritmos-demo/avaliacoes',cap:'<b>Turmas &amp; Avaliações:</b> todas as entregas da disciplina, barra de progresso por turma (56 alunos), exportação CSV e disparo de feedbacks.',plain:'Turmas e Avaliações no RubricPro (56 alunos, progresso de correção, CSV e feedbacks).'},
+    {src:'assets/app/04_editor_rubrica.webp',url:'https://www.rubricpro.com.br/rubricas/editar/normalizacao-bd',cap:'<b>Editor de Rubricas:</b> modo analítico ou ponderado, 16 descritores editáveis, reordenação por arraste, revisão e salvamento automático.',plain:'Editor completo de rubricas 4×4 no RubricPro.'},
+    {src:'assets/app/03_avaliacao_aluno.webp',url:'https://www.rubricpro.com.br/cursos/algoritmos-demo/avaliar/ana-silva',cap:'<b>Avaliação aluno por aluno:</b> o professor clica no nível atingido em cada critério, vê a pontuação em tempo real e registra feedback individual.',plain:'Tela de avaliação individual por rubrica no RubricPro.'},
+    {src:'assets/app/02_estatisticas.webp',url:'https://www.rubricpro.com.br/cursos/algoritmos-demo/estatisticas',cap:'<b>Estatísticas da turma:</b> média geral, alunos abaixo do esperado, distribuição de notas e gargalos por critério para guiar a próxima aula.',plain:'Dashboard de estatísticas e distribuição de notas da turma no RubricPro.'}
+  ];
+  let curShot=0;
+  const pImg=$('plat-img'), pUrl=$('plat-url'), pCap=$('plat-cap');
+  document.querySelectorAll('.plat-tab').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      curShot=+btn.dataset.shot;
+      document.querySelectorAll('.plat-tab').forEach(b=>b.setAttribute('aria-selected', b===btn?'true':'false'));
+      const s=SHOTS[curShot];
+      pImg.style.opacity='.25';
+      setTimeout(()=>{ pImg.src=s.src; pImg.alt=s.plain; pUrl.textContent=s.url; pCap.innerHTML=s.cap; pImg.style.opacity='1'; }, 120);
+    });
+  });
+  $('plat-stage').addEventListener('click', ()=>openLB(SHOTS[curShot].src, SHOTS[curShot].plain));
+  $('plat-zoom').addEventListener('click', ()=>openLB(SHOTS[curShot].src, SHOTS[curShot].plain));
+
+  // 3) simulador ao vivo do gateway
+  const nodes={groq:$('n-groq'),gem:$('n-gem'),oai:$('n-oai'),ant:$('n-ant'),or:$('n-or')};
+  const dot1=$('dot1'), dot2=$('dot2'), fbArc=$('gw-fb-arc'), zod=$('n-zod');
+  const tz1=$('t-zod1'), tz2=$('t-zod2'), tz3=$('t-zod3'), simLog=$('sim-log');
+  function setSim(mode){
+    document.querySelectorAll('.sim-btn').forEach(b=>b.classList.toggle('on', b.dataset.sim===mode));
+    Object.values(nodes).forEach(n=>{ n.classList.remove('hl-ok','hl-err','hl-fb','hl-lock','dim'); });
+    fbArc.setAttribute('stroke-width','2.5');
+    zod.setAttribute('fill','#1E88E5');
+    tz1.textContent='Zod valida'; tz2.textContent='esquema, níveis e pesos'; tz3.textContent='→ rubrica em streaming';
+    dot2.style.display='';
+    if(mode==='normal'){
+      nodes.groq.classList.add('hl-ok');
+      ['gem','oai','ant','or'].forEach(k=>nodes[k].classList.add('dim'));
+      dot1.setAttribute('fill','#1E88E5');
+      dot1.style.offsetPath="path('M150 180 H552 C590 180 590 60 628 60')";
+      dot2.setAttribute('fill','#1BAF7A');
+      dot2.style.offsetPath="path('M778 60 C820 60 820 180 856 180')";
+      simLog.innerHTML='<span class="tag ok">200 OK</span><span>Pedido 4×4 (4.413 tokens) → Groq (GPT-OSS 120B) → Zod validou esquema e invariantes → rubrica em ~2,5 s.</span>';
+    } else if(mode==='fallback'){
+      nodes.groq.classList.add('hl-err');
+      nodes.gem.classList.add('hl-fb');
+      ['oai','ant','or'].forEach(k=>nodes[k].classList.add('dim'));
+      fbArc.setAttribute('stroke-width','4');
+      dot1.setAttribute('fill','#EF6339');
+      dot1.style.offsetPath="path('M150 180 H552 C590 180 590 60 628 60')";
+      dot2.setAttribute('fill','#00BCD4');
+      dot2.style.offsetPath="path('M778 120 C810 120 820 180 856 180')";
+      simLog.innerHTML='<span class="tag fb">FALLBACK GRÁTIS</span><span>Groq retornou 429 (cota esgotada) → gateway desviou para Gemini 2.5 Flash na cota gratuita e avisou na tela qual modelo respondeu.</span>';
+    } else {
+      nodes.ant.classList.add('hl-lock');
+      ['groq','gem','oai','or'].forEach(k=>nodes[k].classList.add('dim'));
+      zod.setAttribute('fill','#7C4A03');
+      tz1.textContent='Erro claro na UI'; tz2.textContent='0 trocas automáticas'; tz3.textContent='chave paga protegida';
+      dot1.setAttribute('fill','#E8A33D');
+      dot1.style.offsetPath="path('M150 180 H552 C590 180 590 240 628 240')";
+      dot2.style.display='none';
+      simLog.innerHTML='<span class="tag lk">BYOK PROTEGIDO</span><span>Falha na chave pessoal Anthropic → gateway interrompe sem trocar de provedor para nunca gerar cobrança surpresa ao professor.</span>';
+    }
+  }
+  document.querySelectorAll('.sim-btn').forEach(b=>b.addEventListener('click', ()=>setSim(b.dataset.sim)));
+  setSim('normal');
+
+  // 4) meta rubrica interativa do RubricPro
+  const MR_LEVELS=[
+    {n:'Inicial',pts:1,c:'#EF6339'},
+    {n:'Em desenv.',pts:2,c:'#F4B625'},
+    {n:'Proficiente',pts:3,c:'#39A3EF'},
+    {n:'Avançado',pts:4,c:'#24CCB5'}
+  ];
+  const MR_CRITS=[
+    {t:'Problema & Produto',s:'Contexto real',d:['Só descreve o prompt sem contexto de uso.','Explica a dor de gerar rubricas, mas pouco do produto.','Mostra a plataforma RubricPro e o problema em sala.','Conecta a plataforma completa (turmas, correção, raio-X) ao motor de IA.']},
+    {t:'Arquitetura do Gateway',s:'Engenharia',d:['Um provedor acoplado direto no código.','Suporta múltiplos modelos, mas sem validação forte.','Contrato único (IApiStrategy), Zod e separação BYOK.','5 provedores, orçamento dinâmico, fallback só no grátis e custo medido em linhas.']},
+    {t:'Rigor Experimental',s:'RubricBench',d:['Sem medições reproduzíveis.','Testes pontuais sem protocolo ou custo estimado.','60 execuções, tempos, custos e IC95 publicados.','Protocolo + achado real (0/5 → 10/10), bug descoberto e limites transparentes.']},
+    {t:'Clareza & Entrega',s:'Site + Vídeo',d:['Difícil de navegar ou sem evidências.','Conteúdo completo, mas estático.','Vídeo narrado, gráficos legíveis e PDFs organizados.','Storytelling em anime + telas reais + simulador interativo e visual memorável.']}
+  ];
+  const picks=[null,null,null,null];
+  const mrGrid=$('mr-grid'), mrPts=$('mr-pts'), mrPct=$('mr-pct'), mrMsg=$('mr-msg'), mrBar=$('mr-bar');
+  function updateMR(){
+    const done=picks.filter(v=>v!=null).length;
+    const sum=picks.reduce((a,v)=>a+(v||0),0);
+    const pctVal=Math.round(sum/16*100);
+    mrPts.textContent=`${sum} / 16`;
+    mrPct.textContent=`${pctVal}%`;
+    mrBar.style.width=pctVal+'%';
+    if(done===0) mrMsg.textContent='Selecione um nível em cada um dos 4 critérios abaixo.';
+    else if(done<4) mrMsg.textContent=`${done} de 4 critérios avaliados — continue selecionando para fechar a nota.`;
+    else if(sum>=15) mrMsg.textContent='Rubrica fechada em nível Avançado! Obrigado pela avaliação :)';
+    else if(sum>=11) mrMsg.textContent='Rubrica fechada em nível Proficiente — bom equilíbrio entre produto e rigor.';
+    else mrMsg.textContent='Rubrica fechada — feedback registrado para evoluirmos antes da banca do TCC!';
+  }
+  MR_CRITS.forEach((cr,ci)=>{
+    const row=document.createElement('div'); row.className='mrub-row';
+    row.innerHTML=`<div class="mrub-crit"><b>${cr.t}</b><span>${cr.s}</span></div>`;
+    MR_LEVELS.forEach((lv,li)=>{
+      const b=document.createElement('button');
+      b.type='button'; b.className='mrub-cell';
+      b.style.setProperty('--lv-c', lv.c);
+      b.innerHTML=`<span class="lv">${lv.n} · ${lv.pts} pt${lv.pts>1?'s':''}</span>${cr.d[li]}`;
+      b.addEventListener('click', ()=>{
+        picks[ci]=lv.pts;
+        row.querySelectorAll('.mrub-cell').forEach(x=>x.classList.remove('on'));
+        b.classList.add('on');
+        updateMR();
+      });
+      row.appendChild(b);
+    });
+    mrGrid.appendChild(row);
+  });
+  $('mr-reset').addEventListener('click', ()=>{
+    picks.fill(null);
+    mrGrid.querySelectorAll('.mrub-cell').forEach(x=>x.classList.remove('on'));
+    updateMR();
+  });
+  updateMR();
 })();
 </script>
 </body>
