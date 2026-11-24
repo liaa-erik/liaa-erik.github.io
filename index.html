@@ -311,8 +311,8 @@ footer a{color:#B8C0CC}
 .b-url{flex:1;background:#0D1118;border:1px solid #232D3D;border-radius:8px;padding:5px 12px;font:500 12.5px var(--mono);color:#9AB0C9;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .b-zoom{appearance:none;background:#1E2A3B;border:1px solid #30425B;color:#E2EEFA;border-radius:8px;padding:6px 11px;font:600 12.5px var(--mono);cursor:pointer}
 .b-zoom:hover{background:var(--blue);border-color:var(--blue);color:#fff}
-.b-stage{position:relative;aspect-ratio:1024/581;background:#0D1118;cursor:zoom-in;overflow:hidden}
-.b-stage img{width:100%;height:100%;object-fit:cover;transition:opacity .2s ease}
+.b-stage{position:relative;aspect-ratio:1512/797;background:#0D1118;cursor:zoom-in;overflow:hidden}
+.b-stage img{width:100%;height:100%;object-fit:cover;object-position:top;transition:opacity .2s ease}
 .b-foot{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 18px;background:#131924;border-top:1px solid #232D3D;color:#C8D4E3;font-size:14.5px;flex-wrap:wrap}
 .b-foot b{color:#fff}
 .b-foot a{color:var(--blue-l);font:600 13px var(--mono);text-decoration:none}
@@ -341,7 +341,7 @@ footer a{color:#B8C0CC}
 .ui-shots{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}
 .ui-shot{background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;cursor:zoom-in;transition:transform .18s,box-shadow .18s}
 .ui-shot:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(15,23,42,.08)}
-.ui-shot .imgw{aspect-ratio:1024/581;background:#0D1118;overflow:hidden}
+.ui-shot .imgw{aspect-ratio:1400/1000;background:#E9EEF5;overflow:hidden}
 .ui-shot img{width:100%;height:100%;object-fit:cover}
 .ui-shot .cap{padding:14px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px}
 .ui-shot .cap b{display:block;font-size:15px}
@@ -388,6 +388,56 @@ footer a{color:#B8C0CC}
 }
 @media (max-width:560px){
   .plat-tabs,.ui-shots{grid-template-columns:1fr}
+}
+
+/* lado a lado enxuto + animações dos gráficos */
+.finds{margin-top:16px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px 24px 8px}
+.finds-t{font:700 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--soft);margin-bottom:4px}
+.fd{display:grid;grid-template-columns:240px 1fr;gap:18px;padding:13px 0;border-top:1px solid var(--line);align-items:baseline}
+.finds-t + .fd{border-top:0}
+.fd b{font-size:15.5px;line-height:1.35}
+.fd span{color:var(--muted);font-size:15px;line-height:1.5}
+.skip{margin-top:14px;font-size:14px;color:var(--soft);border:1.5px dashed #C9D3E0;border-radius:12px;padding:10px 14px;background:#FAFBFD}
+.ch .bx{transition:width 1s cubic-bezier(.2,.7,.2,1)}
+.ch .mk,.ch .wk,.ch .ci{transition:opacity .45s ease .55s}
+.ch.fade-in:not(.on) .bx{width:0!important}
+.ch.fade-in:not(.on) .mk,.ch.fade-in:not(.on) .wk,.ch.fade-in:not(.on) .ci{opacity:0}
+.kpi.fade-in .card{transition:transform .5s ease,opacity .5s ease}
+.kpi.fade-in:not(.on) .card{opacity:0;transform:translateY(10px)}
+.kpi.fade-in.on .card:nth-child(2){transition-delay:.08s}.kpi.fade-in.on .card:nth-child(3){transition-delay:.16s}.kpi.fade-in.on .card:nth-child(4){transition-delay:.24s}
+
+/* exemplo real: entrada x saída */
+.ex{display:grid;grid-template-columns:290px minmax(0,1fr);gap:18px;margin-top:36px;align-items:stretch}
+.ex-in{background:var(--night);color:#E3E7EE;border-radius:18px;padding:22px;display:flex;flex-direction:column}
+.ex-k{font:700 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--blue-l);margin-bottom:14px}
+.ex-in dl{margin:0}
+.ex-in dt{font:600 11.5px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:#8A93A3}
+.ex-in dd{margin:3px 0 13px;font-size:15px;line-height:1.4;color:#F1F5F9}
+.ex-btn{margin-top:auto;appearance:none;border:0;border-radius:10px;background:var(--blue);color:#fff;font:700 14px 'Plus Jakarta Sans',system-ui,sans-serif;padding:11px 14px;cursor:pointer}
+.ex-btn:hover{background:var(--blue-d)}
+.ex-out{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px;min-width:0}
+.ex-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px}
+.ex-head b{font-size:17px;line-height:1.3}
+.ex-time{font:700 13px var(--mono);color:var(--blue-d);background:#E8F1FC;border-radius:999px;padding:5px 11px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.ex-scroll{overflow-x:auto}
+.ex-grid{display:grid;grid-template-columns:165px repeat(4,minmax(0,1fr));gap:6px;min-width:720px}
+.exh{font:700 12.5px/1.3 'Plus Jakarta Sans',system-ui,sans-serif;padding:8px 10px 6px;border-top:4px solid var(--lc,#C9D3E0);color:var(--ink)}
+.exh small{display:block;font:600 11px var(--mono);color:var(--soft);margin-top:2px}
+.exc,.exd{border-radius:10px;padding:10px 11px;font-size:13px;line-height:1.45;opacity:0;transform:translateY(6px);transition:opacity .25s ease,transform .25s ease}
+.exc{background:#F4F6FA;font-weight:700;color:var(--ink)}
+.exd{background:#fff;border:1px solid var(--line);color:var(--muted);cursor:pointer}
+.exd span{display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.exd.open{color:var(--ink);border-color:#BBD6F5;background:#F7FBFF}
+.exd.open span{-webkit-line-clamp:unset;display:block}
+.exc.in,.exd.in{opacity:1;transform:none}
+.ex-ok{margin-top:12px;font:700 13px var(--mono);color:var(--green);opacity:0;transition:opacity .3s}
+.ex-ok.in{opacity:1}
+@media (max-width:900px){
+  .ex{grid-template-columns:1fr}
+  .fd{grid-template-columns:1fr;gap:4px}
+}
+@media (prefers-reduced-motion:reduce){
+  .ch .bx,.ch .mk,.ch .wk,.ch .ci,.exc,.exd,.kpi.fade-in .card{transition:none}
 }
 </style>
 </head>
@@ -446,21 +496,21 @@ footer a{color:#B8C0CC}
     <div class="plat-tabs" role="tablist" aria-label="Telas reais do RubricPro">
       <button class="plat-tab" type="button" role="tab" aria-selected="true" data-shot="0"><span class="pt-n">01 · Turmas</span><b>Cursos e avaliações</b><span>Prazos, progresso da sala, CSV e envio de feedbacks.</span></button>
       <button class="plat-tab" type="button" role="tab" aria-selected="false" data-shot="1"><span class="pt-n">02 · Editor</span><b>Rubrica completa</b><span>Analítica ou ponderada, salvamento automático e revisão.</span></button>
-      <button class="plat-tab" type="button" role="tab" aria-selected="false" data-shot="2"><span class="pt-n">03 · Correção</span><b>Aluno por aluno</b><span>Avalie direto pela matriz com nota e retorno claros.</span></button>
+      <button class="plat-tab" type="button" role="tab" aria-selected="false" data-shot="2"><span class="pt-n">03 · Correção</span><b>Aluno por aluno</b><span>Nível de cada aluno por critério, numa grade.</span></button>
       <button class="plat-tab" type="button" role="tab" aria-selected="false" data-shot="3"><span class="pt-n">04 · Raio-X</span><b>Estatísticas da turma</b><span>Distribuição das notas e gargalos por critério.</span></button>
     </div>
 
     <div class="browser fade-in">
       <div class="b-bar">
         <div class="b-dots" aria-hidden="true"><i></i><i></i><i></i></div>
-        <div class="b-url" id="plat-url">https://www.rubricpro.com.br/cursos/algoritmos-demo/avaliacoes</div>
+        <div class="b-url" id="plat-url">https://www.rubricpro.com.br/dashboard/cursos/Algoritmos%20-%20Demo</div>
         <button class="b-zoom" type="button" id="plat-zoom">⤢ Ampliar</button>
       </div>
       <div class="b-stage" id="plat-stage" title="Clique para ampliar em tela cheia">
-        <img id="plat-img" src="assets/app/01_turmas.webp" alt="Tela de Cursos e Avaliações no RubricPro mostrando 56 alunos e progresso das correções">
+        <img id="plat-img" src="assets/app/01_turmas.webp?v=2" alt="Tela de Cursos e Avaliações no RubricPro com quatro avaliações, prazos e progresso da correção">
       </div>
       <div class="b-foot">
-        <span id="plat-cap"><b>Turmas &amp; Avaliações:</b> todas as entregas da disciplina, barra de progresso por turma, exportação CSV e disparo de feedbacks.</span>
+        <span id="plat-cap"><b>Turmas &amp; Avaliações:</b> as avaliações da disciplina com prazo, rubrica, progresso da correção (56 alunos) e envio de feedbacks.</span>
         <a href="https://www.rubricpro.com.br/" target="_blank" rel="noopener">Testar ao vivo ↗</a>
       </div>
     </div>
@@ -561,12 +611,12 @@ footer a{color:#B8C0CC}
     </div>
 
     <div class="ui-shots fade-in">
-      <div class="ui-shot" data-lb="assets/app/05_assistente_ia.webp" data-lb-cap="Assistente de Criação de Rubrica com IA no RubricPro: atividade, estrutura e seletor único de provedor e modelo.">
-        <div class="imgw"><img src="assets/app/05_assistente_ia.webp" alt="Modal real do Assistente de Criação de Rubrica com IA no RubricPro" loading="lazy"></div>
+      <div class="ui-shot" data-lb="assets/app/05_assistente_ia.webp?v=2" data-lb-cap="Assistente de Criação de Rubrica com IA: atividade, estrutura, provedor, modelo e modo pensante.">
+        <div class="imgw"><img src="assets/app/05_assistente_ia.webp?v=2" alt="Modal real do Assistente de Criação de Rubrica com IA no RubricPro" loading="lazy"></div>
         <div class="cap"><div><b>Assistente de IA em produção</b><span>Seletor único de provedor e modelo direto na criação.</span></div><i>⤢ Ampliar</i></div>
       </div>
-      <div class="ui-shot" data-lb="assets/app/06_minhas_chaves.webp" data-lb-cap="Modal Minhas Chaves de IA (BYOK): Groq e Gemini na cota gratuita; OpenAI, Anthropic e OpenRouter salvas somente no navegador.">
-        <div class="imgw"><img src="assets/app/06_minhas_chaves.webp" alt="Modal real Minhas Chaves de IA com os 5 provedores" loading="lazy"></div>
+      <div class="ui-shot" data-lb="assets/app/06_minhas_chaves.webp?v=2" data-lb-cap="Modal Minhas Chaves de IA (BYOK): Groq e Gemini na cota gratuita; OpenAI, Anthropic e OpenRouter salvas somente no navegador.">
+        <div class="imgw"><img src="assets/app/06_minhas_chaves.webp?v=2" alt="Modal real Minhas Chaves de IA com os 5 provedores" loading="lazy"></div>
         <div class="cap"><div><b>Minhas Chaves de IA (BYOK)</b><span>Salvas somente no navegador — nunca gravadas no banco.</span></div><i>⤢ Ampliar</i></div>
       </div>
     </div>
@@ -605,6 +655,38 @@ footer a{color:#B8C0CC}
   </div>
 </section>
 
+<!-- EXEMPLO REAL -->
+<section id="exemplo">
+  <div class="wrap">
+    <p class="eyebrow"><span class="pips" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>Exemplo real · entrada e saída</p>
+    <h2>O que o professor pede, e o que volta.</h2>
+    <p class="lede">Caso C1 do RubricBench, gerado pelo GPT-OSS 120B (Groq) na rodada de 23/11. A rubrica abaixo é a resposta, sem edição.</p>
+    <div class="ex fade-in" id="ex">
+      <div class="ex-in">
+        <p class="ex-k">Pedido do professor</p>
+        <dl>
+          <dt>Curso</dt><dd>Engenharia de Software · TCC</dd>
+          <dt>Trabalho</dt><dd>Monografia de TCC</dd>
+          <dt>Nível</dt><dd>Graduação</dd>
+          <dt>Foco</dt><dd>Qualidade técnica da solução e clareza da escrita científica</dd>
+          <dt>Estrutura</dt><dd>Analítica · 4 critérios × 4 níveis</dd>
+          <dt>Modelo</dt><dd>GPT-OSS 120B (Groq) · modo pensante</dd>
+        </dl>
+        <button type="button" class="ex-btn" id="ex-go">▶ Gerar de novo</button>
+      </div>
+      <div class="ex-out">
+        <div class="ex-head">
+          <b id="ex-title">Rubrica para Monografia de TCC em Engenharia de Software</b>
+          <span class="ex-time" id="ex-time">0,0 s</span>
+        </div>
+        <div class="ex-scroll"><div class="ex-grid" id="ex-grid" role="table" aria-label="Rubrica 4×4 gerada no caso C1"></div></div>
+        <p class="ex-ok" id="ex-ok">✓ JSON válido sem reparo · 4 critérios × 4 níveis · 2,49 s</p>
+      </div>
+    </div>
+    <p class="src">bench/results/2026-11-23T16-25-56/rubrics/C1/thinking/groq_openai_gpt-oss-120b/01.json · clique numa célula para ler o descritor inteiro</p>
+  </div>
+</section>
+
 <!-- CUSTO DE UM MODELO -->
 <section id="custo">
   <div class="wrap">
@@ -637,55 +719,48 @@ footer a{color:#B8C0CC}
   <div class="wrap">
     <p class="eyebrow"><span class="pips" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>Critério 04 · Experimento</p>
     <h2>A mesma rubrica, lado a lado.</h2>
-    <p class="lede">Mesmo pedido, mesmas instruções, 20 execuções por modelo. O banco de testes chama a estratégia de cada provedor direto, sem fallback, e confere o que voltou. O C1 é a rubrica de TCC 4×4 que todo modelo recebe; o C2, um seminário 5×4 com pesos que somam 100. Nesta rodada entraram os três modelos com chave disponível.</p>
+    <p class="lede">Mesmo pedido, mesmas instruções, 20 execuções por modelo, sem fallback. C1: rubrica de TCC 4×4. C2: seminário 5×4 com pesos que somam 100.</p>
     <span class="status ok">● Rodada oficial · 23/11/2026 · 60 execuções · 3 de 6 modelos</span>
 
-    <div class="kpi">
-      <div class="card"><b>43/43</b><span>rubricas do modo pensante que chegaram vieram em JSON válido, sem reparo, e cumpriram todos os invariantes</span></div>
-      <div class="card"><b>2,5 s</b><span>mediana do GPT-OSS 120B (Groq) para a rubrica inteira do C1. Claude Haiku 5.5: 9,0 s. Gemini 2.5 Flash: 14,5 s</span></div>
-      <div class="card"><b>US$ 0,73</b><span>por mil rubricas com o Claude Haiku 5.5 na chave pessoal (C1, estimado)</span></div>
-      <div class="card"><b>0/5</b><span>rubricas válidas do Gemini 2.5 Flash em JSON direto. No modo pensante, com mais tokens reservados: 10/10</span></div>
+    <div class="kpi fade-in">
+      <div class="card"><b>43/43</b><span>rubricas do modo pensante válidas sem nenhum reparo</span></div>
+      <div class="card"><b>2,5 s</b><span>GPT-OSS 120B no C1 (Claude 9,0 s · Gemini 14,5 s)</span></div>
+      <div class="card"><b>US$ 0,73</b><span>por mil rubricas no Claude Haiku 5.5 (estimado)</span></div>
+      <div class="card"><b>0/5</b><span>Gemini em JSON direto; 10/10 no modo pensante</span></div>
     </div>
 
-    <div class="ch" id="ch-tempo">
+    <div class="ch fade-in" id="ch-tempo">
       <h3>Quanto tempo até a rubrica completa</h3>
-      <p class="sub">Mediana do tempo total por modelo, com a faixa entre o 1º e o 3º quartil. O ponto escuro marca quando chegou o primeiro token.</p>
+      <p class="sub">Mediana do tempo total, com a faixa entre o 1º e o 3º quartil. O ponto escuro é o primeiro token.</p>
       <div class="lg" data-legend="time"></div>
       <div class="plot" data-plot="time"></div>
-      <p class="note">O Gemini 2.5 Flash raciocina por dentro antes de escrever: cerca de 8 s sem nenhum token visível. O Claude Haiku 5.5 começa em 0,6 s, mas escreve a justificativa pedagógica antes da rubrica. Tempos de uma rodada, num computador, em 23/11.</p>
+      <p class="note">O Gemini raciocina cerca de 8 s antes do primeiro token; o Claude escreve a justificativa pedagógica antes da rubrica.</p>
     </div>
 
     <div class="grid2" style="margin-top:16px">
-      <div class="ch" id="ch-conf" style="margin-top:0">
+      <div class="ch fade-in" id="ch-conf" style="margin-top:0">
         <h3>Rubricas válidas sem reparo</h3>
-        <p class="sub">JSON puro que passou no esquema Zod sem conserto, com o intervalo de confiança de 95% (Wilson). Com n = 5 ou 10, “100%” ainda quer dizer “pelo menos 57% ou 72%”.</p>
+        <p class="sub">JSON que passou no esquema Zod sem conserto, com IC95 (Wilson): com n = 5 ou 10, “100%” quer dizer pelo menos 57% ou 72%.</p>
         <div class="lg" data-legend="conf"></div>
         <div class="plot" data-plot="conf"></div>
-        <p class="note"><b>C2, Gemini:</b> 2 das 5 chamadas voltaram 429 da cota gratuita. As 3 que responderam passaram em tudo.<br><b>JSON direto, Gemini:</b> 4 respostas pararam em cerca de 220 caracteres. O pipeline do app reparou a quinta (○), mas ela saiu com 1 critério dos 4 pedidos: passou no esquema e falhou nos invariantes.</p>
+        <p class="note"><b>Gemini, C2:</b> 2 chamadas barradas pela cota (429).<br><b>Gemini, JSON direto:</b> 4 respostas cortadas; o app reparou a quinta (○), mas com 1 critério dos 4.</p>
       </div>
-      <div class="ch" id="ch-custo" style="margin-top:0">
+      <div class="ch fade-in" id="ch-custo" style="margin-top:0">
         <h3>Custo por mil rubricas</h3>
-        <p class="sub">Em US$, pela mediana de cada modelo no modo pensante. Groq e Gemini rodam na cota gratuita do servidor; o valor é o que custariam no plano pago.</p>
+        <p class="sub">US$, mediana no modo pensante. Groq e Gemini: preço do plano pago (no app, cota grátis).</p>
         <div class="lg" data-legend="cost"></div>
         <div class="plot" data-plot="cost"></div>
-        <p class="note">Tokens estimados por caracteres ÷ 4, com os preços de 23/11 em <code>prices.json</code>. O raciocínio interno do Gemini é cobrado como saída e não aparece no texto, então o valor dele é um piso.</p>
+        <p class="note">Tokens ≈ caracteres ÷ 4, preços de 23/11. O Gemini é um piso: o raciocínio interno não entra na conta.</p>
       </div>
     </div>
 
-    <div class="grid3" style="margin-top:16px">
-      <div class="card find"><h3>O orçamento de tokens decide o Gemini</h3><p>Em JSON direto, o gateway reserva 1.663 tokens. O Gemini 2.5 Flash gasta quase tudo raciocinando e corta o JSON. No modo pensante, a reserva sobe para 4.413 e ele faz 10 de 10. A calculadora acima dá os mesmos dois números.</p><p class="src">max_tokens em runs.jsonl · estimateRubricTokenBudget</p></div>
-      <div class="card find"><h3>Uma frase parecia derrubar o Claude</h3><p>No piloto, o Claude Haiku 5.5 recusava a geração (<code>stop_reason: refusal</code>). O prompt herdado pedia a “corrente de pensamento (Chain of Thought)”, e o pedido explícito de expor o raciocínio provavelmente acionava um filtro do modelo (hipótese nossa; a API não diz o motivo). Trocamos por “justificativa pedagógica estruturada” e desligamos o raciocínio oculto, que era redundante: 20 de 20.</p><p class="src">BaseThinkingStrategy.ts · piloto de 23/11</p></div>
-      <div class="card find"><h3>O Gemini 3.8 Flash ficou de fora</h3><p>No piloto, ele devolvia 503 (alta demanda) no servidor do Google, e em produção o fallback do app já trocava sozinho para o 2.5 Flash. A rodada usou o 2.5 Flash, o modelo estável do catálogo. Mesmo assim, a cota gratuita barrou 2 das 20 chamadas.</p><p class="src">meta.json · erros por código no summary.json</p></div>
+    <div class="finds fade-in">
+      <p class="finds-t">Três achados da rodada</p>
+      <div class="fd"><b>O orçamento decide o Gemini</b><span>JSON direto: 1.663 tokens reservados → 0/5. Modo pensante: 4.413 → 10/10. A calculadora acima dá os mesmos números.</span></div>
+      <div class="fd"><b>Uma frase travava o Claude</b><span>Pedir a “corrente de pensamento” provavelmente acionava a recusa; com “justificativa pedagógica estruturada”, 20/20.</span></div>
+      <div class="fd"><b>Gemini 3.8 Flash ficou de fora</b><span>Dava 503 (alta demanda) no piloto; a rodada usou o 2.5 Flash, o modelo estável do catálogo.</span></div>
     </div>
-
-    <div class="sbs">
-      <div class="slot done"><h3><i class="sw" style="background:#1E88E5"></i>GPT-OSS 120B</h3><p class="m">Groq · cota do sistema</p><ul><li>modo pensante: <b>15/15</b></li><li>JSON direto: <b>5/5</b></li><li>tempo no C1: <b>2,5 s</b></li><li>por rubrica: <b>US$ 0,0007</b> no plano pago; no app, grátis</li></ul></div>
-      <div class="slot done"><h3><i class="sw" style="background:#EB6834"></i>Gemini 2.5 Flash</h3><p class="m">Gemini · cota do sistema · no lugar do 3.8 Flash</p><ul><li>modo pensante: <b>13/15</b> (2 × 429)</li><li>JSON direto: <b>0/5</b></li><li>tempo no C1: <b>14,5 s</b></li><li>por rubrica: <b>≥ US$ 0,0041</b> no plano pago; no app, grátis</li></ul></div>
-      <div class="slot done"><h3><i class="sw" style="background:#1BAF7A"></i>Claude Haiku 5.5</h3><p class="m">Anthropic · chave pessoal</p><ul><li>modo pensante: <b>15/15</b></li><li>JSON direto: <b>5/5</b></li><li>tempo no C1: <b>9,0 s</b></li><li>por rubrica: <b>US$ 0,0007</b></li></ul></div>
-      <div class="slot"><h3>GPT-4o mini</h3><p class="m">OpenAI · chave pessoal</p><ul><li>fora desta rodada: faltou a chave da OpenAI no banco de testes</li><li>preço já conferido: US$ 0,15 / 0,60 por 1M tokens</li></ul></div>
-      <div class="slot"><h3>DeepSeek V3</h3><p class="m">OpenRouter · chave pessoal</p><ul><li>fora desta rodada: faltou a chave do OpenRouter</li><li>preço típico: US$ 0,26 / 1,03 por 1M tokens</li></ul></div>
-      <div class="slot"><h3>Llama 3.3 70B</h3><p class="m">OpenRouter · chave pessoal</p><ul><li>fora desta rodada: faltou a chave do OpenRouter</li><li>preço típico: US$ 0,10 / 0,32 por 1M tokens</li></ul></div>
-    </div>
+    <p class="skip">Fora desta rodada, por falta das chaves da OpenAI e do OpenRouter: GPT-4o mini, DeepSeek V3 e Llama 3.3 70B.</p>
 
     <details>
       <summary>Tabela completa da rodada</summary>
@@ -1001,10 +1076,10 @@ footer a{color:#B8C0CC}
 
   // 2) plataforma tabs
   const SHOTS=[
-    {src:'assets/app/01_turmas.webp',url:'https://www.rubricpro.com.br/cursos/algoritmos-demo/avaliacoes',cap:'<b>Turmas &amp; Avaliações:</b> todas as entregas da disciplina, barra de progresso por turma (56 alunos), exportação CSV e disparo de feedbacks.',plain:'Turmas e Avaliações no RubricPro (56 alunos, progresso de correção, CSV e feedbacks).'},
-    {src:'assets/app/04_editor_rubrica.webp',url:'https://www.rubricpro.com.br/rubricas/editar/normalizacao-bd',cap:'<b>Editor de Rubricas:</b> modo analítico ou ponderado, 16 descritores editáveis, reordenação por arraste, revisão e salvamento automático.',plain:'Editor completo de rubricas 4×4 no RubricPro.'},
-    {src:'assets/app/03_avaliacao_aluno.webp',url:'https://www.rubricpro.com.br/cursos/algoritmos-demo/avaliar/ana-silva',cap:'<b>Avaliação aluno por aluno:</b> o professor clica no nível atingido em cada critério, vê a pontuação em tempo real e registra feedback individual.',plain:'Tela de avaliação individual por rubrica no RubricPro.'},
-    {src:'assets/app/02_estatisticas.webp',url:'https://www.rubricpro.com.br/cursos/algoritmos-demo/estatisticas',cap:'<b>Estatísticas da turma:</b> média geral, alunos abaixo do esperado, distribuição de notas e gargalos por critério para guiar a próxima aula.',plain:'Dashboard de estatísticas e distribuição de notas da turma no RubricPro.'}
+    {src:'assets/app/01_turmas.webp?v=2',url:'https://www.rubricpro.com.br/dashboard/cursos/Algoritmos%20-%20Demo',cap:'<b>Turmas &amp; Avaliações:</b> as avaliações da disciplina com prazo, rubrica, progresso da correção (56 alunos) e envio de feedbacks.',plain:'Turmas e Avaliações no RubricPro: prazos, rubricas, progresso da correção e envio de feedbacks.'},
+    {src:'assets/app/04_editor_rubrica.webp?v=2',url:'https://www.rubricpro.com.br/dashboard/rubricas/…/editar%20modelo',cap:'<b>Editor de Rubricas:</b> analítica ou ponderada, pesos por critério, níveis editáveis, revisão e salvamento automático.',plain:'Editor de rubricas do RubricPro (rubrica ponderada com 3 critérios e 4 níveis).'},
+    {src:'assets/app/03_avaliacao_aluno.webp?v=2',url:'https://www.rubricpro.com.br/dashboard/cursos/Algoritmos%20-%20Demo/avalia%C3%A7%C3%B5es',cap:'<b>Correção em grade:</b> o nível de cada aluno em cada critério, a nota média e a situação, numa tela só.',plain:'Correção em grade no RubricPro: nível por critério, nota média e situação de cada aluno.'},
+    {src:'assets/app/02_estatisticas.webp?v=2',url:'https://www.rubricpro.com.br/dashboard/cursos/Algoritmos%20-%20Demo · Estatísticas',cap:'<b>Estatísticas da turma:</b> média geral, alunos abaixo do esperado, andamento da correção e distribuição das notas.',plain:'Estatísticas da turma no RubricPro: média, alunos abaixo da média e distribuição das notas.'}
   ];
   let curShot=0;
   const pImg=$('plat-img'), pUrl=$('plat-url'), pCap=$('plat-cap');
@@ -1115,6 +1190,62 @@ footer a{color:#B8C0CC}
     updateMR();
   });
   updateMR();
+})();
+
+// exemplo real: rubrica do caso C1 (GPT-OSS 120B, Groq), rubrics/C1/thinking/groq_openai_gpt-oss-120b/01.json
+(function(){
+  const grid=document.getElementById('ex-grid'); if(!grid) return;
+  const LV=[['Iniciante','#EF6339'],['Em Desenvolvimento','#F4B625'],['Proficiente','#39A3EF'],['Avançado','#24CCB5']];
+  const CR=[
+    ['Fundamentação teórica e aderência aos conceitos de Engenharia de Software',[
+      'Apresenta referências superficiais ou inadequadas, sem relacionar aos conceitos de engenharia de software.',
+      'Utiliza referências relevantes, porém demonstra compreensão parcial dos conceitos fundamentais.',
+      'Apresenta fundamentação teórica consistente, relacionando adequadamente os principais conceitos de engenharia de software.',
+      'Constrói uma base teórica robusta, integrando de forma crítica e aprofundada todos os conceitos relevantes da engenharia de software.']],
+    ['Projeto e implementação da solução (arquitetura, boas práticas e testes)',[
+      'Descreve a solução de forma vaga, sem evidenciar arquitetura clara ou boas práticas de codificação.',
+      'Apresenta arquitetura básica e algumas boas práticas, porém com lacunas significativas na implementação e nos testes.',
+      'Descreve arquitetura bem estruturada, aplica boas práticas de codificação e realiza testes funcionais adequados.',
+      'Entrega uma solução com arquitetura exemplar, segue rigorosamente as melhores práticas de engenharia de software e inclui testes automatizados completos e bem documentados.']],
+    ['Análise de resultados e validade das conclusões',[
+      'Apresenta resultados sem análise crítica e conclusões não sustentadas pelos dados.',
+      'Fornece análise limitada dos resultados, com algumas conclusões parcialmente justificadas.',
+      'Realiza análise coerente dos resultados, vinculando-os às hipóteses e apresentando conclusões bem fundamentadas.',
+      'Desenvolve análise aprofundada, critica as limitações, valida rigorosamente as conclusões e propõe implicações e trabalhos futuros relevantes.']],
+    ['Qualidade da redação científica (estrutura, linguagem e normas acadêmicas)',[
+      'Texto apresenta sérias falhas de estrutura, linguagem confusa e não segue normas acadêmicas.',
+      'Texto tem estrutura básica, linguagem razoável, mas contém erros frequentes de formatação e normas.',
+      'Texto está bem estruturado, linguagem clara e cumpre a maioria das normas acadêmicas exigidas.',
+      'Texto demonstra excelência na organização, linguagem precisa e impecável, atendendo integralmente às normas de publicação acadêmica.']]
+  ];
+  const el=(c,t)=>{const e=document.createElement('div'); e.className=c; if(t!=null) e.textContent=t; return e;};
+  const head=el('exh'); head.innerHTML='Critério'; head.style.setProperty('--lc','transparent'); head.style.color='var(--soft)'; grid.appendChild(head);
+  LV.forEach((l,i)=>{const h=el('exh'); h.innerHTML=l[0]+'<small>nível '+(i+1)+'</small>'; h.style.setProperty('--lc',l[1]); grid.appendChild(h);});
+  const cells=[];
+  CR.forEach(c=>{
+    const n=el('exc',c[0]); n.setAttribute('role','rowheader'); grid.appendChild(n); cells.push(n);
+    c[1].forEach((d,i)=>{const x=el('exd'); const sp=document.createElement('span'); sp.textContent=d; x.appendChild(sp); x.tabIndex=0; x.setAttribute('role','cell'); x.title=LV[i][0];
+      const tg=()=>x.classList.toggle('open'); x.addEventListener('click',tg); x.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();tg();}});
+      grid.appendChild(x); cells.push(x);});
+  });
+  const time=document.getElementById('ex-time'), ok=document.getElementById('ex-ok');
+  const TTFT=609, TOTAL=2490, fmt=ms=>(ms/1000).toLocaleString('pt-BR',{minimumFractionDigits:ms<TOTAL?1:2,maximumFractionDigits:ms<TOTAL?1:2})+' s';
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let raf=0, timers=[];
+  function play(){
+    cancelAnimationFrame(raf); timers.forEach(clearTimeout); timers=[];
+    cells.forEach(c=>c.classList.remove('in','open')); ok.classList.remove('in');
+    if(reduce){cells.forEach(c=>c.classList.add('in')); ok.classList.add('in'); time.textContent=fmt(TOTAL); return;}
+    const step=(TOTAL-TTFT-150)/cells.length;
+    cells.forEach((c,i)=>timers.push(setTimeout(()=>c.classList.add('in'), TTFT+i*step)));
+    const t0=performance.now();
+    const tick=now=>{const t=Math.min(now-t0,TOTAL); time.textContent=fmt(t); if(t<TOTAL) raf=requestAnimationFrame(tick); else ok.classList.add('in');};
+    raf=requestAnimationFrame(tick);
+  }
+  document.getElementById('ex-go').addEventListener('click',play);
+  let done=false;
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting&&!done){done=true; play(); io.disconnect();}}),{threshold:.35});
+  io.observe(document.getElementById('ex'));
 })();
 </script>
 </body>
