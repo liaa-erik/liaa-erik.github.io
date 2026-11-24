@@ -1,0 +1,141 @@
+WEBVTT
+
+1
+00:00:00.500 --> 00:00:06.725
+Uma rubrica de TCC, com quatro critérios e quatro níveis, pronta em cerca de três segundos.
+
+2
+00:00:06.755 --> 00:00:10.876
+Gerada agora, no RubricPro, pelo modelo que o professor escolheu.
+
+3
+00:00:11.976 --> 00:00:16.700
+Eu sou o Erik Fontella, e este é o módulo de inteligência artificial do meu TCC,
+
+4
+00:00:16.730 --> 00:00:22.538
+feito no Laboratório de IA Aplicada da Unipampa, com André Medeiros e Pedro Guilherme.
+
+5
+00:00:23.638 --> 00:00:25.625
+Fazer uma rubrica à mão leva horas.
+
+6
+00:00:25.655 --> 00:00:28.910
+E gerar com IA tem três armadilhas:
+
+7
+00:00:28.940 --> 00:00:31.860
+a cota gratuita acaba para a turma inteira ao mesmo tempo,
+
+8
+00:00:31.890 --> 00:00:34.278
+o aplicativo fica preso a um só fornecedor,
+
+9
+00:00:34.308 --> 00:00:36.585
+e o modelo devolve um JSON quebrado.
+
+10
+00:00:37.685 --> 00:00:43.909
+No aplicativo, o professor descreve a atividade: curso, disciplina, nível e foco.
+
+11
+00:00:43.939 --> 00:00:47.573
+Escolhe a estrutura, aqui 4 × 4, e o modelo.
+
+12
+00:00:47.603 --> 00:00:50.093
+Groq e Gemini usam a cota do sistema.
+
+13
+00:00:50.123 --> 00:00:56.233
+OpenAI, Anthropic e OpenRouter só funcionam com a chave do próprio professor, que fica no navegador.
+
+14
+00:00:56.263 --> 00:00:59.272
+Ao gerar, a rubrica aparece célula por célula,
+
+15
+00:00:59.302 --> 00:01:02.168
+e chega com a justificativa pedagógica de cada escolha.
+
+16
+00:01:03.268 --> 00:01:05.308
+Por trás da tela, há um gateway.
+
+17
+00:01:05.338 --> 00:01:07.755
+Cada provedor implementa o mesmo contrato.
+
+18
+00:01:07.785 --> 00:01:14.573
+O gateway calcula quantos tokens a rubrica precisa, chama a estratégia escolhida e só entrega o que passou na validação.
+
+19
+00:01:14.603 --> 00:01:19.411
+Se a cota grátis acaba, ele tenta outro modelo grátis e avisa qual respondeu.
+
+20
+00:01:19.441 --> 00:01:24.268
+Com chave paga, nunca troca sozinho, para não gerar um custo surpresa.
+
+21
+00:01:25.368 --> 00:01:27.628
+E quanto custa colocar um modelo novo?
+
+22
+00:01:27.658 --> 00:01:30.693
+Se o provedor já existe, 7 linhas no catálogo.
+
+23
+00:01:30.723 --> 00:01:35.064
+Um provedor novo, de 150 a 250 linhas.
+
+24
+00:01:36.164 --> 00:01:42.791
+Para medir, criamos o RubricBench: 60 execuções, a mesma rubrica, três modelos.
+
+25
+00:01:42.821 --> 00:01:49.112
+No modo pensante, 43 de 43 rubricas vieram válidas, sem nenhum reparo.
+
+26
+00:01:49.142 --> 00:01:54.182
+O GPT-OSS 120B, no Groq, levou 2,5 segundos.
+
+27
+00:01:54.212 --> 00:01:59.699
+O Claude Haiku, 9. O Gemini 2.5 Flash, 14,5.
+
+28
+00:01:59.729 --> 00:02:04.759
+Com o Claude, mil rubricas custam cerca de 73 centavos de dólar.
+
+29
+00:02:05.859 --> 00:02:07.874
+O achado mais útil foi uma falha.
+
+30
+00:02:07.904 --> 00:02:16.194
+Pedindo JSON direto, o Gemini gastou quase todo o orçamento de tokens pensando e cortou a resposta: 0 de 5.
+
+31
+00:02:16.224 --> 00:02:20.648
+No modo pensante, com mais tokens reservados: 10 de 10.
+
+32
+00:02:20.678 --> 00:02:26.241
+E o aplicativo aceitou uma rubrica cortada. Isso fica como correção antes do TCC.
+
+33
+00:02:27.341 --> 00:02:30.509
+Ainda é uma rodada só, com poucas execuções,
+
+34
+00:02:30.539 --> 00:02:36.900
+e esquema certo não é rubrica boa: a qualidade pedagógica vai para uma avaliação cega com professores.
+
+35
+00:02:36.930 --> 00:02:40.918
+Os números, o código e as entregas estão no site do projeto.
