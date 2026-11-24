@@ -324,13 +324,7 @@ footer a{color:#B8C0CC}
     <div class="hero-grid">
       <div>
         <div class="video" id="video">
-          <!-- Quando o vídeo estiver pronto: troque o bloco .ph por
-               <video src="assets/rubricpro.mp4" controls playsinline poster="assets/poster.jpg"></video>
-               ou um <iframe> do YouTube. -->
-          <div class="ph">
-            <div class="play"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="#fff"/></svg></div>
-            <p><b style="color:#F1F5F9">Vídeo de 2 a 3 minutos</b><br>em produção</p>
-          </div>
+          <video controls playsinline preload="metadata" poster="assets/liaa-poster.jpg"><source src="assets/liaa.mp4" type="video/mp4"><track kind="captions" src="assets/liaa.pt-BR.vtt" srclang="pt-BR" label="Português"></video>
         </div>
         <div class="btns">
           <a class="btn p" href="https://www.rubricpro.com.br/" target="_blank" rel="noopener">Abrir o RubricPro ↗</a>
@@ -566,7 +560,7 @@ footer a{color:#B8C0CC}
           <li><b>tempo</b>: até o primeiro token e até o fim do streaming, em milissegundos;</li>
           <li><b>custo</b>: caracteres ÷ 4 × preço da página de cada provedor em 23/11.</li>
         </ul>
-        <p style="margin-top:10px">Commit <code>4934bd5</code>, git limpo. Prompts com hash fixo (C1 <code>4d7f329b…</code>, C2 <code>ca2a2861…</code>). O pacote para avaliação cega já existe (rubricas A, B e C do C1, escala de 1 a 5 em 5 itens) e ainda espera os professores.</p>
+        <p style="margin-top:10px">Commit <code>4934bd5</code>, git limpo. Prompts com hash fixo (C1 <code>4d7f329b…</code>, C2 <code>ca2a2861…</code>). A qualidade pedagógica das rubricas ficou fora desta rodada: o banco de testes mede forma, tempo e custo.</p>
       </div>
     </details>
     <p class="src">bench/results/2026-11-23T16-25-56 · RubricBench · commit 4934bd5</p>
@@ -597,9 +591,9 @@ footer a{color:#B8C0CC}
         <div class="col ok"><b>Entregue</b>Análise da rubrica com IA no editor, resumo da turma, teste real da chave pessoal, cota diária, seletor único de provedor e modelo.</div></div>
       <div class="ev"><div class="d">23/11</div>
         <div class="col"><b>Combinado</b>Protocolo e primeira rodada do lado a lado.</div>
-        <div class="col ok"><b>Entregue</b>RubricBench: protocolo, 60 execuções em 3 modelos e pacote para avaliação cega. Resultados na seção Lado a lado.</div></div>
+        <div class="col ok"><b>Entregue</b>RubricBench: protocolo e 60 execuções em 3 modelos. Resultados na seção Lado a lado.</div></div>
       <div class="ev"><div class="d">próximo</div>
-        <div class="col wait"><b>Em aberto</b>Rodar GPT-4o mini, DeepSeek V3 e Llama 3.3 70B. Avaliação cega com professores.</div>
+        <div class="col wait"><b>Em aberto</b>Rodar GPT-4o mini, DeepSeek V3 e Llama 3.3 70B.</div>
         <div class="col off"><b>—</b>Os resultados entram na seção Lado a lado.</div></div>
     </div>
   </div>
@@ -612,7 +606,7 @@ footer a{color:#B8C0CC}
     <h2>O que sustentamos, e o que ainda não.</h2>
     <div class="grid2">
       <div class="card"><h3>Agora com protocolo, mas com n pequeno</h3><p>São 5 a 10 execuções por modelo e caso, numa rodada, num computador. “Menos de 15 s” vale para as medianas; o 3º quartil do Gemini 2.5 Flash passou disso (15,7 s no C1). “Zero erro estrutural” vale para o modo pensante (43/43); em JSON direto, o Gemini errou 5 de 5. Tokens e custo são estimados (≈4 caracteres por token).</p></div>
-      <div class="card"><h3>Esquema certo não é rubrica boa</h3><p>O Zod garante a forma (critérios, níveis, pesos). A qualidade pedagógica precisa de avaliação por professores.</p></div>
+      <div class="card"><h3>Esquema certo não é rubrica boa</h3><p>O Zod e os invariantes garantem a forma (critérios, níveis, pesos). A qualidade pedagógica das rubricas não foi avaliada nesta rodada.</p></div>
       <div class="card"><h3>Só APIs online</h3><p>Modelos locais pequenos ficaram fora do escopo da disciplina, por decisão combinada em 15/09.</p></div>
       <div class="card"><h3>BYOK muda quem paga, não o custo</h3><p>A chave pessoal tira a conta do servidor, mas o professor paga o provedor. Por isso não há troca automática.</p></div>
     </div>
@@ -629,7 +623,7 @@ footer a{color:#B8C0CC}
       <div class="dv" style="--lv:#F4B625"><span class="dcode">A01–A03 · ago–set</span><h3>Ideação, investigação e plano experimental</h3><p>Da ideia do gateway ao plano de experimentos, entregues no Classroom.</p><div class="k"><span>anexos no Classroom</span></div></div>
       <div class="dv" style="--lv:#949CA8"><span class="dcode">A04 · 15/09</span><h3>Gateway multimodelo e BYOK</h3><p>Primeira apresentação: Strategy, fallback, BYOK, modo pensante e Zod.</p><div class="k"><a href="assets/entregas/a04-apresentacao-gateway.pdf" target="_blank" rel="noopener">PDF ↗</a></div></div>
       <div class="dv" style="--lv:#39A3EF"><span class="dcode">A11 · 03/11</span><h3>Escopo fechado e demonstração</h3><p>APIs online, modelos pelo catálogo, orçamento de tokens e fallback só no grátis.</p><div class="k"><a href="assets/entregas/a11-defesa-modulo-ia.pdf" target="_blank" rel="noopener">PDF ↗</a></div></div>
-      <div class="dv" style="--lv:#24CCB5"><span class="dcode">A13 e A15 · nov</span><h3>Este site, com vídeo</h3><p>Contexto, problema, solução, evolução e o vídeo animado no topo.</p><div class="k"><a href="#topo">você está aqui</a></div></div>
+      <div class="dv" style="--lv:#24CCB5"><span class="dcode">A13 e A15 · nov</span><h3>Este site, com vídeo</h3><p>Contexto, problema, solução, evolução e o vídeo de 2:43 no topo: narrado, legendado, com a geração real de uma rubrica no app.</p><div class="k"><a href="#topo">você está aqui</a></div></div>
       <div class="dv" style="--lv:#24CCB5"><span class="dcode">A14 · nov</span><h3>Vídeo de retrospectiva</h3><p>Até 2 minutos, produzido com IA, sobre o que o projeto já fez.</p><div class="k"><span>em produção</span></div></div>
       <div class="dv" style="--lv:#39A3EF"><span class="dcode">A17 · 24/11</span><h3>Dicas de IA e agentes</h3><p>Seis dicas tiradas do RubricPro, do GitExpert Check e da avaliação de artefatos.</p><div class="k"><!-- quando exportar os slides: <a href="assets/entregas/a17-dicas-ia.pdf" target="_blank" rel="noopener">PDF ↗</a> --><span>slides em aula</span></div></div>
     </div>
